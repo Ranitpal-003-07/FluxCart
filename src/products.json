@@ -1,0 +1,1802 @@
+[
+  {
+    "id": 1,
+    "name": "Levi's Monitor 167",
+    "category": "Electronics",
+    "price": 1939,
+    "unitsSold": 298,
+    "date": "2024-01-05",
+    "inStock": 9
+  },
+  {
+    "id": 2,
+    "name": "IKEA Jeans 768",
+    "category": "Electronics",
+    "price": 1645,
+    "unitsSold": 397,
+    "date": "2024-01-19",
+    "inStock": 65
+  },
+  {
+    "id": 3,
+    "name": "Samsung TV 148",
+    "category": "Electronics",
+    "price": 1949,
+    "unitsSold": 191,
+    "date": "2024-01-21",
+    "inStock": 63
+  },
+  {
+    "id": 4,
+    "name": "Levi's TV 103",
+    "category": "Fashion",
+    "price": 934,
+    "unitsSold": 379,
+    "date": "2024-01-24",
+    "inStock": 39
+  },
+  {
+    "id": 5,
+    "name": "IKEA Hoodie 593",
+    "category": "Fashion",
+    "price": 715,
+    "unitsSold": 460,
+    "date": "2024-01-17",
+    "inStock": 39
+  },
+  {
+    "id": 6,
+    "name": "IKEA Jeans 337",
+    "category": "Fashion",
+    "price": 319,
+    "unitsSold": 265,
+    "date": "2024-01-19",
+    "inStock": 72
+  },
+  {
+    "id": 7,
+    "name": "Sony Phone 883",
+    "category": "Fashion",
+    "price": 893,
+    "unitsSold": 271,
+    "date": "2024-01-04",
+    "inStock": 21
+  },
+  {
+    "id": 8,
+    "name": "Nike Monitor 461",
+    "category": "Fashion",
+    "price": 225,
+    "unitsSold": 406,
+    "date": "2024-01-14",
+    "inStock": 87
+  },
+  {
+    "id": 9,
+    "name": "LG Jeans 150",
+    "category": "Electronics",
+    "price": 251,
+    "unitsSold": 232,
+    "date": "2024-01-06",
+    "inStock": 57
+  },
+  {
+    "id": 10,
+    "name": "IKEA Table 186",
+    "category": "Home",
+    "price": 978,
+    "unitsSold": 137,
+    "date": "2024-01-15",
+    "inStock": 30
+  },
+  {
+    "id": 11,
+    "name": "Levi's TV 591",
+    "category": "Fashion",
+    "price": 1062,
+    "unitsSold": 100,
+    "date": "2024-01-23",
+    "inStock": 61
+  },
+  {
+    "id": 12,
+    "name": "Dell Hoodie 996",
+    "category": "Fashion",
+    "price": 1717,
+    "unitsSold": 347,
+    "date": "2024-01-20",
+    "inStock": 55
+  },
+  {
+    "id": 13,
+    "name": "Dell Backpack 567",
+    "category": "Fashion",
+    "price": 1249,
+    "unitsSold": 173,
+    "date": "2024-01-31",
+    "inStock": 29
+  },
+  {
+    "id": 14,
+    "name": "Dell Hoodie 297",
+    "category": "Electronics",
+    "price": 1398,
+    "unitsSold": 262,
+    "date": "2024-01-11",
+    "inStock": 92
+  },
+  {
+    "id": 15,
+    "name": "Nike Hoodie 648",
+    "category": "Electronics",
+    "price": 1554,
+    "unitsSold": 107,
+    "date": "2024-01-05",
+    "inStock": 97
+  },
+  {
+    "id": 16,
+    "name": "LG Monitor 591",
+    "category": "Fashion",
+    "price": 645,
+    "unitsSold": 346,
+    "date": "2024-01-12",
+    "inStock": 73
+  },
+  {
+    "id": 17,
+    "name": "Nike Sneakers 890",
+    "category": "Fashion",
+    "price": 1295,
+    "unitsSold": 132,
+    "date": "2024-01-21",
+    "inStock": 52
+  },
+  {
+    "id": 18,
+    "name": "Adidas Phone 549",
+    "category": "Fashion",
+    "price": 1341,
+    "unitsSold": 325,
+    "date": "2024-01-08",
+    "inStock": 36
+  },
+  {
+    "id": 19,
+    "name": "Apple TV 786",
+    "category": "Home",
+    "price": 1130,
+    "unitsSold": 352,
+    "date": "2024-01-01",
+    "inStock": 91
+  },
+  {
+    "id": 20,
+    "name": "Nike Hoodie 472",
+    "category": "Electronics",
+    "price": 1982,
+    "unitsSold": 414,
+    "date": "2024-01-01",
+    "inStock": 22
+  },
+  {
+    "id": 21,
+    "name": "Nike TV 723",
+    "category": "Electronics",
+    "price": 768,
+    "unitsSold": 269,
+    "date": "2024-01-06",
+    "inStock": 35
+  },
+  {
+    "id": 22,
+    "name": "HP Backpack 369",
+    "category": "Fashion",
+    "price": 1583,
+    "unitsSold": 465,
+    "date": "2024-01-16",
+    "inStock": 34
+  },
+  {
+    "id": 23,
+    "name": "Apple Laptop 375",
+    "category": "Home",
+    "price": 1884,
+    "unitsSold": 87,
+    "date": "2024-01-30",
+    "inStock": 77
+  },
+  {
+    "id": 24,
+    "name": "Levi's Backpack 177",
+    "category": "Home",
+    "price": 1734,
+    "unitsSold": 214,
+    "date": "2024-01-14",
+    "inStock": 81
+  },
+  {
+    "id": 25,
+    "name": "Adidas Desk 553",
+    "category": "Home",
+    "price": 682,
+    "unitsSold": 260,
+    "date": "2024-01-05",
+    "inStock": 72
+  },
+  {
+    "id": 26,
+    "name": "HP Laptop 374",
+    "category": "Home",
+    "price": 1157,
+    "unitsSold": 114,
+    "date": "2024-01-09",
+    "inStock": 8
+  },
+  {
+    "id": 27,
+    "name": "HP Phone 216",
+    "category": "Home",
+    "price": 1042,
+    "unitsSold": 448,
+    "date": "2024-01-19",
+    "inStock": 69
+  },
+  {
+    "id": 28,
+    "name": "Adidas TV 680",
+    "category": "Home",
+    "price": 597,
+    "unitsSold": 238,
+    "date": "2024-01-27",
+    "inStock": 24
+  },
+  {
+    "id": 29,
+    "name": "IKEA Backpack 943",
+    "category": "Electronics",
+    "price": 1907,
+    "unitsSold": 408,
+    "date": "2024-01-28",
+    "inStock": 12
+  },
+  {
+    "id": 30,
+    "name": "Adidas Backpack 502",
+    "category": "Home",
+    "price": 493,
+    "unitsSold": 188,
+    "date": "2024-01-12",
+    "inStock": 28
+  },
+  {
+    "id": 31,
+    "name": "Dell TV 877",
+    "category": "Fashion",
+    "price": 1968,
+    "unitsSold": 322,
+    "date": "2024-01-19",
+    "inStock": 87
+  },
+  {
+    "id": 32,
+    "name": "Samsung Monitor 702",
+    "category": "Fashion",
+    "price": 1381,
+    "unitsSold": 456,
+    "date": "2024-01-03",
+    "inStock": 71
+  },
+  {
+    "id": 33,
+    "name": "Adidas Desk 954",
+    "category": "Home",
+    "price": 1951,
+    "unitsSold": 396,
+    "date": "2024-01-13",
+    "inStock": 46
+  },
+  {
+    "id": 34,
+    "name": "Adidas Monitor 418",
+    "category": "Home",
+    "price": 910,
+    "unitsSold": 183,
+    "date": "2024-01-19",
+    "inStock": 33
+  },
+  {
+    "id": 35,
+    "name": "LG Phone 465",
+    "category": "Electronics",
+    "price": 347,
+    "unitsSold": 182,
+    "date": "2024-01-24",
+    "inStock": 45
+  },
+  {
+    "id": 36,
+    "name": "Sony Hoodie 666",
+    "category": "Electronics",
+    "price": 995,
+    "unitsSold": 488,
+    "date": "2024-01-01",
+    "inStock": 13
+  },
+  {
+    "id": 37,
+    "name": "Nike Hoodie 226",
+    "category": "Fashion",
+    "price": 1666,
+    "unitsSold": 308,
+    "date": "2024-01-20",
+    "inStock": 13
+  },
+  {
+    "id": 38,
+    "name": "Levi's Sneakers 861",
+    "category": "Fashion",
+    "price": 963,
+    "unitsSold": 67,
+    "date": "2024-01-02",
+    "inStock": 85
+  },
+  {
+    "id": 39,
+    "name": "HP TV 421",
+    "category": "Home",
+    "price": 1510,
+    "unitsSold": 93,
+    "date": "2024-01-09",
+    "inStock": 88
+  },
+  {
+    "id": 40,
+    "name": "Dell Monitor 750",
+    "category": "Home",
+    "price": 523,
+    "unitsSold": 64,
+    "date": "2024-01-04",
+    "inStock": 62
+  },
+  {
+    "id": 41,
+    "name": "Dell Sneakers 436",
+    "category": "Home",
+    "price": 1901,
+    "unitsSold": 373,
+    "date": "2024-01-30",
+    "inStock": 25
+  },
+  {
+    "id": 42,
+    "name": "IKEA Jeans 529",
+    "category": "Fashion",
+    "price": 1449,
+    "unitsSold": 247,
+    "date": "2024-01-04",
+    "inStock": 58
+  },
+  {
+    "id": 43,
+    "name": "Adidas Phone 945",
+    "category": "Electronics",
+    "price": 1172,
+    "unitsSold": 307,
+    "date": "2024-01-20",
+    "inStock": 63
+  },
+  {
+    "id": 44,
+    "name": "HP Hoodie 124",
+    "category": "Home",
+    "price": 74,
+    "unitsSold": 204,
+    "date": "2024-01-17",
+    "inStock": 42
+  },
+  {
+    "id": 45,
+    "name": "Samsung Laptop 617",
+    "category": "Fashion",
+    "price": 595,
+    "unitsSold": 265,
+    "date": "2024-01-31",
+    "inStock": 48
+  },
+  {
+    "id": 46,
+    "name": "Sony Phone 950",
+    "category": "Electronics",
+    "price": 1496,
+    "unitsSold": 59,
+    "date": "2024-01-13",
+    "inStock": 99
+  },
+  {
+    "id": 47,
+    "name": "Apple Desk 884",
+    "category": "Electronics",
+    "price": 1074,
+    "unitsSold": 89,
+    "date": "2024-01-16",
+    "inStock": 36
+  },
+  {
+    "id": 48,
+    "name": "IKEA TV 580",
+    "category": "Home",
+    "price": 714,
+    "unitsSold": 443,
+    "date": "2024-01-10",
+    "inStock": 15
+  },
+  {
+    "id": 49,
+    "name": "Samsung Laptop 723",
+    "category": "Home",
+    "price": 1825,
+    "unitsSold": 102,
+    "date": "2024-01-22",
+    "inStock": 19
+  },
+  {
+    "id": 50,
+    "name": "IKEA Desk 647",
+    "category": "Fashion",
+    "price": 720,
+    "unitsSold": 488,
+    "date": "2024-01-19",
+    "inStock": 100
+  },
+  {
+    "id": 51,
+    "name": "Nike Laptop 358",
+    "category": "Electronics",
+    "price": 138,
+    "unitsSold": 392,
+    "date": "2024-01-04",
+    "inStock": 6
+  },
+  {
+    "id": 52,
+    "name": "Adidas Phone 510",
+    "category": "Electronics",
+    "price": 865,
+    "unitsSold": 325,
+    "date": "2024-01-19",
+    "inStock": 45
+  },
+  {
+    "id": 53,
+    "name": "Nike Backpack 942",
+    "category": "Fashion",
+    "price": 1715,
+    "unitsSold": 111,
+    "date": "2024-01-20",
+    "inStock": 11
+  },
+  {
+    "id": 54,
+    "name": "Apple TV 355",
+    "category": "Electronics",
+    "price": 1962,
+    "unitsSold": 459,
+    "date": "2024-01-25",
+    "inStock": 81
+  },
+  {
+    "id": 55,
+    "name": "Nike TV 635",
+    "category": "Electronics",
+    "price": 1499,
+    "unitsSold": 384,
+    "date": "2024-01-23",
+    "inStock": 37
+  },
+  {
+    "id": 56,
+    "name": "HP Backpack 564",
+    "category": "Home",
+    "price": 1273,
+    "unitsSold": 202,
+    "date": "2024-01-01",
+    "inStock": 53
+  },
+  {
+    "id": 57,
+    "name": "Dell Phone 712",
+    "category": "Fashion",
+    "price": 1190,
+    "unitsSold": 227,
+    "date": "2024-01-01",
+    "inStock": 25
+  },
+  {
+    "id": 58,
+    "name": "LG Backpack 228",
+    "category": "Fashion",
+    "price": 1317,
+    "unitsSold": 492,
+    "date": "2024-01-11",
+    "inStock": 9
+  },
+  {
+    "id": 59,
+    "name": "Nike Desk 335",
+    "category": "Home",
+    "price": 814,
+    "unitsSold": 85,
+    "date": "2024-01-24",
+    "inStock": 53
+  },
+  {
+    "id": 60,
+    "name": "Levi's Monitor 196",
+    "category": "Home",
+    "price": 450,
+    "unitsSold": 397,
+    "date": "2024-01-22",
+    "inStock": 94
+  },
+  {
+    "id": 61,
+    "name": "Levi's Laptop 763",
+    "category": "Fashion",
+    "price": 1716,
+    "unitsSold": 154,
+    "date": "2024-01-29",
+    "inStock": 12
+  },
+  {
+    "id": 62,
+    "name": "IKEA Desk 134",
+    "category": "Electronics",
+    "price": 383,
+    "unitsSold": 314,
+    "date": "2024-01-09",
+    "inStock": 35
+  },
+  {
+    "id": 63,
+    "name": "Sony Monitor 854",
+    "category": "Fashion",
+    "price": 539,
+    "unitsSold": 50,
+    "date": "2024-01-30",
+    "inStock": 71
+  },
+  {
+    "id": 64,
+    "name": "Adidas Phone 395",
+    "category": "Home",
+    "price": 328,
+    "unitsSold": 72,
+    "date": "2024-01-24",
+    "inStock": 46
+  },
+  {
+    "id": 65,
+    "name": "Adidas Table 184",
+    "category": "Electronics",
+    "price": 667,
+    "unitsSold": 347,
+    "date": "2024-01-07",
+    "inStock": 38
+  },
+  {
+    "id": 66,
+    "name": "Apple Table 642",
+    "category": "Home",
+    "price": 631,
+    "unitsSold": 166,
+    "date": "2024-01-11",
+    "inStock": 20
+  },
+  {
+    "id": 67,
+    "name": "Levi's Phone 527",
+    "category": "Home",
+    "price": 813,
+    "unitsSold": 51,
+    "date": "2024-01-26",
+    "inStock": 78
+  },
+  {
+    "id": 68,
+    "name": "Samsung Laptop 311",
+    "category": "Fashion",
+    "price": 137,
+    "unitsSold": 388,
+    "date": "2024-01-23",
+    "inStock": 41
+  },
+  {
+    "id": 69,
+    "name": "Levi's Backpack 117",
+    "category": "Fashion",
+    "price": 1912,
+    "unitsSold": 407,
+    "date": "2024-01-19",
+    "inStock": 7
+  },
+  {
+    "id": 70,
+    "name": "Nike Hoodie 949",
+    "category": "Home",
+    "price": 334,
+    "unitsSold": 240,
+    "date": "2024-01-25",
+    "inStock": 87
+  },
+  {
+    "id": 71,
+    "name": "Adidas Desk 227",
+    "category": "Home",
+    "price": 1332,
+    "unitsSold": 238,
+    "date": "2024-01-10",
+    "inStock": 69
+  },
+  {
+    "id": 72,
+    "name": "Dell TV 966",
+    "category": "Fashion",
+    "price": 727,
+    "unitsSold": 396,
+    "date": "2024-01-02",
+    "inStock": 71
+  },
+  {
+    "id": 73,
+    "name": "Nike Desk 567",
+    "category": "Home",
+    "price": 940,
+    "unitsSold": 62,
+    "date": "2024-01-05",
+    "inStock": 54
+  },
+  {
+    "id": 74,
+    "name": "Sony Desk 793",
+    "category": "Home",
+    "price": 280,
+    "unitsSold": 265,
+    "date": "2024-01-20",
+    "inStock": 30
+  },
+  {
+    "id": 75,
+    "name": "Sony Sneakers 896",
+    "category": "Fashion",
+    "price": 1258,
+    "unitsSold": 125,
+    "date": "2024-01-27",
+    "inStock": 100
+  },
+  {
+    "id": 76,
+    "name": "Dell TV 955",
+    "category": "Home",
+    "price": 521,
+    "unitsSold": 172,
+    "date": "2024-01-11",
+    "inStock": 8
+  },
+  {
+    "id": 77,
+    "name": "Levi's Sneakers 802",
+    "category": "Home",
+    "price": 1762,
+    "unitsSold": 57,
+    "date": "2024-01-08",
+    "inStock": 88
+  },
+  {
+    "id": 78,
+    "name": "Sony Laptop 627",
+    "category": "Home",
+    "price": 1973,
+    "unitsSold": 139,
+    "date": "2024-01-26",
+    "inStock": 39
+  },
+  {
+    "id": 79,
+    "name": "Dell Laptop 468",
+    "category": "Home",
+    "price": 304,
+    "unitsSold": 375,
+    "date": "2024-01-26",
+    "inStock": 32
+  },
+  {
+    "id": 80,
+    "name": "Levi's TV 947",
+    "category": "Fashion",
+    "price": 1090,
+    "unitsSold": 131,
+    "date": "2024-01-14",
+    "inStock": 28
+  },
+  {
+    "id": 81,
+    "name": "HP Phone 383",
+    "category": "Home",
+    "price": 1674,
+    "unitsSold": 464,
+    "date": "2024-01-04",
+    "inStock": 7
+  },
+  {
+    "id": 82,
+    "name": "Sony Phone 662",
+    "category": "Electronics",
+    "price": 977,
+    "unitsSold": 149,
+    "date": "2024-01-10",
+    "inStock": 78
+  },
+  {
+    "id": 83,
+    "name": "Levi's Laptop 270",
+    "category": "Fashion",
+    "price": 925,
+    "unitsSold": 115,
+    "date": "2024-01-22",
+    "inStock": 29
+  },
+  {
+    "id": 84,
+    "name": "Sony Table 564",
+    "category": "Electronics",
+    "price": 466,
+    "unitsSold": 162,
+    "date": "2024-01-10",
+    "inStock": 46
+  },
+  {
+    "id": 85,
+    "name": "Apple Jeans 782",
+    "category": "Home",
+    "price": 609,
+    "unitsSold": 162,
+    "date": "2024-01-13",
+    "inStock": 91
+  },
+  {
+    "id": 86,
+    "name": "Nike Monitor 950",
+    "category": "Fashion",
+    "price": 1774,
+    "unitsSold": 337,
+    "date": "2024-01-22",
+    "inStock": 14
+  },
+  {
+    "id": 87,
+    "name": "Dell Table 569",
+    "category": "Electronics",
+    "price": 1216,
+    "unitsSold": 92,
+    "date": "2024-01-18",
+    "inStock": 46
+  },
+  {
+    "id": 88,
+    "name": "Adidas Jeans 276",
+    "category": "Electronics",
+    "price": 1576,
+    "unitsSold": 468,
+    "date": "2024-01-16",
+    "inStock": 44
+  },
+  {
+    "id": 89,
+    "name": "HP Table 396",
+    "category": "Home",
+    "price": 248,
+    "unitsSold": 486,
+    "date": "2024-01-14",
+    "inStock": 41
+  },
+  {
+    "id": 90,
+    "name": "Adidas Table 399",
+    "category": "Home",
+    "price": 1277,
+    "unitsSold": 258,
+    "date": "2024-01-21",
+    "inStock": 85
+  },
+  {
+    "id": 91,
+    "name": "Sony Backpack 727",
+    "category": "Home",
+    "price": 1833,
+    "unitsSold": 142,
+    "date": "2024-01-19",
+    "inStock": 58
+  },
+  {
+    "id": 92,
+    "name": "Levi's Monitor 790",
+    "category": "Home",
+    "price": 1029,
+    "unitsSold": 329,
+    "date": "2024-01-26",
+    "inStock": 67
+  },
+  {
+    "id": 93,
+    "name": "Samsung TV 154",
+    "category": "Home",
+    "price": 329,
+    "unitsSold": 125,
+    "date": "2024-01-23",
+    "inStock": 45
+  },
+  {
+    "id": 94,
+    "name": "Nike Monitor 836",
+    "category": "Electronics",
+    "price": 1409,
+    "unitsSold": 226,
+    "date": "2024-01-02",
+    "inStock": 59
+  },
+  {
+    "id": 95,
+    "name": "Samsung Sneakers 816",
+    "category": "Fashion",
+    "price": 1717,
+    "unitsSold": 424,
+    "date": "2024-01-02",
+    "inStock": 84
+  },
+  {
+    "id": 96,
+    "name": "IKEA Laptop 300",
+    "category": "Home",
+    "price": 1537,
+    "unitsSold": 205,
+    "date": "2024-01-18",
+    "inStock": 71
+  },
+  {
+    "id": 97,
+    "name": "Levi's Hoodie 581",
+    "category": "Fashion",
+    "price": 1516,
+    "unitsSold": 144,
+    "date": "2024-01-21",
+    "inStock": 32
+  },
+  {
+    "id": 98,
+    "name": "Samsung Jeans 569",
+    "category": "Home",
+    "price": 1578,
+    "unitsSold": 63,
+    "date": "2024-01-26",
+    "inStock": 77
+  },
+  {
+    "id": 99,
+    "name": "Levi's Monitor 156",
+    "category": "Electronics",
+    "price": 1075,
+    "unitsSold": 299,
+    "date": "2024-01-15",
+    "inStock": 34
+  },
+  {
+    "id": 100,
+    "name": "Adidas Phone 708",
+    "category": "Electronics",
+    "price": 1945,
+    "unitsSold": 452,
+    "date": "2024-01-08",
+    "inStock": 59
+  },
+  {
+    "id": 101,
+    "name": "Sony Jeans 637",
+    "category": "Home",
+    "price": 1029,
+    "unitsSold": 454,
+    "date": "2024-01-29",
+    "inStock": 52
+  },
+  {
+    "id": 102,
+    "name": "Samsung TV 772",
+    "category": "Electronics",
+    "price": 1198,
+    "unitsSold": 66,
+    "date": "2024-01-18",
+    "inStock": 13
+  },
+  {
+    "id": 103,
+    "name": "Dell Desk 261",
+    "category": "Electronics",
+    "price": 936,
+    "unitsSold": 366,
+    "date": "2024-01-23",
+    "inStock": 23
+  },
+  {
+    "id": 104,
+    "name": "HP Monitor 811",
+    "category": "Home",
+    "price": 602,
+    "unitsSold": 174,
+    "date": "2024-01-27",
+    "inStock": 92
+  },
+  {
+    "id": 105,
+    "name": "Sony TV 689",
+    "category": "Fashion",
+    "price": 1864,
+    "unitsSold": 296,
+    "date": "2024-01-31",
+    "inStock": 41
+  },
+  {
+    "id": 106,
+    "name": "Levi's Table 456",
+    "category": "Electronics",
+    "price": 1437,
+    "unitsSold": 386,
+    "date": "2024-01-16",
+    "inStock": 76
+  },
+  {
+    "id": 107,
+    "name": "HP Laptop 329",
+    "category": "Fashion",
+    "price": 1412,
+    "unitsSold": 444,
+    "date": "2024-01-27",
+    "inStock": 71
+  },
+  {
+    "id": 108,
+    "name": "LG Sneakers 314",
+    "category": "Electronics",
+    "price": 266,
+    "unitsSold": 159,
+    "date": "2024-01-26",
+    "inStock": 58
+  },
+  {
+    "id": 109,
+    "name": "Adidas Backpack 326",
+    "category": "Electronics",
+    "price": 809,
+    "unitsSold": 462,
+    "date": "2024-01-01",
+    "inStock": 90
+  },
+  {
+    "id": 110,
+    "name": "Dell TV 719",
+    "category": "Electronics",
+    "price": 1661,
+    "unitsSold": 128,
+    "date": "2024-01-04",
+    "inStock": 52
+  },
+  {
+    "id": 111,
+    "name": "Apple Desk 665",
+    "category": "Home",
+    "price": 59,
+    "unitsSold": 363,
+    "date": "2024-01-08",
+    "inStock": 97
+  },
+  {
+    "id": 112,
+    "name": "Nike Sneakers 426",
+    "category": "Fashion",
+    "price": 728,
+    "unitsSold": 166,
+    "date": "2024-01-14",
+    "inStock": 98
+  },
+  {
+    "id": 113,
+    "name": "LG Jeans 220",
+    "category": "Home",
+    "price": 521,
+    "unitsSold": 371,
+    "date": "2024-01-17",
+    "inStock": 42
+  },
+  {
+    "id": 114,
+    "name": "Samsung Table 723",
+    "category": "Home",
+    "price": 1595,
+    "unitsSold": 140,
+    "date": "2024-01-04",
+    "inStock": 76
+  },
+  {
+    "id": 115,
+    "name": "Levi's Jeans 222",
+    "category": "Home",
+    "price": 1395,
+    "unitsSold": 381,
+    "date": "2024-01-07",
+    "inStock": 51
+  },
+  {
+    "id": 116,
+    "name": "Samsung Phone 426",
+    "category": "Fashion",
+    "price": 165,
+    "unitsSold": 376,
+    "date": "2024-01-28",
+    "inStock": 63
+  },
+  {
+    "id": 117,
+    "name": "LG Desk 748",
+    "category": "Electronics",
+    "price": 387,
+    "unitsSold": 353,
+    "date": "2024-01-09",
+    "inStock": 21
+  },
+  {
+    "id": 118,
+    "name": "Levi's TV 459",
+    "category": "Home",
+    "price": 298,
+    "unitsSold": 323,
+    "date": "2024-01-23",
+    "inStock": 78
+  },
+  {
+    "id": 119,
+    "name": "Nike TV 874",
+    "category": "Home",
+    "price": 1293,
+    "unitsSold": 273,
+    "date": "2024-01-10",
+    "inStock": 86
+  },
+  {
+    "id": 120,
+    "name": "Sony Backpack 749",
+    "category": "Home",
+    "price": 950,
+    "unitsSold": 234,
+    "date": "2024-01-15",
+    "inStock": 18
+  },
+  {
+    "id": 121,
+    "name": "Samsung Monitor 219",
+    "category": "Fashion",
+    "price": 343,
+    "unitsSold": 215,
+    "date": "2024-01-30",
+    "inStock": 18
+  },
+  {
+    "id": 122,
+    "name": "Dell Jeans 759",
+    "category": "Electronics",
+    "price": 627,
+    "unitsSold": 95,
+    "date": "2024-01-14",
+    "inStock": 7
+  },
+  {
+    "id": 123,
+    "name": "Sony Monitor 899",
+    "category": "Home",
+    "price": 732,
+    "unitsSold": 491,
+    "date": "2024-01-23",
+    "inStock": 60
+  },
+  {
+    "id": 124,
+    "name": "Samsung Sneakers 504",
+    "category": "Home",
+    "price": 1931,
+    "unitsSold": 453,
+    "date": "2024-01-06",
+    "inStock": 28
+  },
+  {
+    "id": 125,
+    "name": "HP Sneakers 983",
+    "category": "Home",
+    "price": 1898,
+    "unitsSold": 216,
+    "date": "2024-01-05",
+    "inStock": 73
+  },
+  {
+    "id": 126,
+    "name": "Nike Sneakers 658",
+    "category": "Home",
+    "price": 197,
+    "unitsSold": 384,
+    "date": "2024-01-09",
+    "inStock": 96
+  },
+  {
+    "id": 127,
+    "name": "Samsung Desk 490",
+    "category": "Home",
+    "price": 54,
+    "unitsSold": 440,
+    "date": "2024-01-14",
+    "inStock": 44
+  },
+  {
+    "id": 128,
+    "name": "Levi's Monitor 905",
+    "category": "Home",
+    "price": 1568,
+    "unitsSold": 438,
+    "date": "2024-01-04",
+    "inStock": 37
+  },
+  {
+    "id": 129,
+    "name": "Dell Sneakers 750",
+    "category": "Fashion",
+    "price": 568,
+    "unitsSold": 205,
+    "date": "2024-01-15",
+    "inStock": 34
+  },
+  {
+    "id": 130,
+    "name": "Nike TV 485",
+    "category": "Electronics",
+    "price": 524,
+    "unitsSold": 177,
+    "date": "2024-01-12",
+    "inStock": 93
+  },
+  {
+    "id": 131,
+    "name": "LG Phone 946",
+    "category": "Home",
+    "price": 319,
+    "unitsSold": 108,
+    "date": "2024-01-07",
+    "inStock": 47
+  },
+  {
+    "id": 132,
+    "name": "Dell Monitor 296",
+    "category": "Electronics",
+    "price": 329,
+    "unitsSold": 208,
+    "date": "2024-01-15",
+    "inStock": 42
+  },
+  {
+    "id": 133,
+    "name": "Sony Jeans 176",
+    "category": "Fashion",
+    "price": 83,
+    "unitsSold": 194,
+    "date": "2024-01-23",
+    "inStock": 12
+  },
+  {
+    "id": 134,
+    "name": "Dell Backpack 348",
+    "category": "Fashion",
+    "price": 332,
+    "unitsSold": 88,
+    "date": "2024-01-16",
+    "inStock": 79
+  },
+  {
+    "id": 135,
+    "name": "IKEA Hoodie 846",
+    "category": "Electronics",
+    "price": 1797,
+    "unitsSold": 162,
+    "date": "2024-01-06",
+    "inStock": 93
+  },
+  {
+    "id": 136,
+    "name": "HP Phone 984",
+    "category": "Fashion",
+    "price": 1129,
+    "unitsSold": 177,
+    "date": "2024-01-17",
+    "inStock": 81
+  },
+  {
+    "id": 137,
+    "name": "Dell Desk 198",
+    "category": "Home",
+    "price": 1402,
+    "unitsSold": 253,
+    "date": "2024-01-10",
+    "inStock": 94
+  },
+  {
+    "id": 138,
+    "name": "Apple Hoodie 792",
+    "category": "Fashion",
+    "price": 587,
+    "unitsSold": 437,
+    "date": "2024-01-11",
+    "inStock": 59
+  },
+  {
+    "id": 139,
+    "name": "IKEA Hoodie 428",
+    "category": "Home",
+    "price": 1705,
+    "unitsSold": 405,
+    "date": "2024-01-17",
+    "inStock": 35
+  },
+  {
+    "id": 140,
+    "name": "Samsung Desk 106",
+    "category": "Fashion",
+    "price": 494,
+    "unitsSold": 403,
+    "date": "2024-01-12",
+    "inStock": 7
+  },
+  {
+    "id": 141,
+    "name": "Adidas Table 611",
+    "category": "Home",
+    "price": 1819,
+    "unitsSold": 244,
+    "date": "2024-01-20",
+    "inStock": 37
+  },
+  {
+    "id": 142,
+    "name": "LG Phone 529",
+    "category": "Home",
+    "price": 1094,
+    "unitsSold": 287,
+    "date": "2024-01-21",
+    "inStock": 36
+  },
+  {
+    "id": 143,
+    "name": "Nike Laptop 853",
+    "category": "Home",
+    "price": 705,
+    "unitsSold": 471,
+    "date": "2024-01-25",
+    "inStock": 58
+  },
+  {
+    "id": 144,
+    "name": "IKEA Table 532",
+    "category": "Fashion",
+    "price": 297,
+    "unitsSold": 156,
+    "date": "2024-01-11",
+    "inStock": 48
+  },
+  {
+    "id": 145,
+    "name": "Nike Jeans 650",
+    "category": "Fashion",
+    "price": 367,
+    "unitsSold": 61,
+    "date": "2024-01-04",
+    "inStock": 85
+  },
+  {
+    "id": 146,
+    "name": "Apple Table 367",
+    "category": "Fashion",
+    "price": 333,
+    "unitsSold": 400,
+    "date": "2024-01-25",
+    "inStock": 9
+  },
+  {
+    "id": 147,
+    "name": "HP Monitor 605",
+    "category": "Fashion",
+    "price": 1387,
+    "unitsSold": 75,
+    "date": "2024-01-21",
+    "inStock": 75
+  },
+  {
+    "id": 148,
+    "name": "Adidas Laptop 432",
+    "category": "Fashion",
+    "price": 1712,
+    "unitsSold": 408,
+    "date": "2024-01-19",
+    "inStock": 8
+  },
+  {
+    "id": 149,
+    "name": "Levi's Backpack 589",
+    "category": "Home",
+    "price": 1406,
+    "unitsSold": 336,
+    "date": "2024-01-21",
+    "inStock": 21
+  },
+  {
+    "id": 150,
+    "name": "Apple Table 604",
+    "category": "Electronics",
+    "price": 310,
+    "unitsSold": 152,
+    "date": "2024-01-12",
+    "inStock": 21
+  },
+  {
+    "id": 151,
+    "name": "Dell Desk 452",
+    "category": "Fashion",
+    "price": 856,
+    "unitsSold": 174,
+    "date": "2024-01-28",
+    "inStock": 55
+  },
+  {
+    "id": 152,
+    "name": "HP Table 568",
+    "category": "Home",
+    "price": 921,
+    "unitsSold": 444,
+    "date": "2024-01-16",
+    "inStock": 13
+  },
+  {
+    "id": 153,
+    "name": "Sony Laptop 589",
+    "category": "Home",
+    "price": 945,
+    "unitsSold": 448,
+    "date": "2024-01-08",
+    "inStock": 55
+  },
+  {
+    "id": 154,
+    "name": "HP Monitor 297",
+    "category": "Home",
+    "price": 82,
+    "unitsSold": 333,
+    "date": "2024-01-08",
+    "inStock": 49
+  },
+  {
+    "id": 155,
+    "name": "LG Jeans 147",
+    "category": "Home",
+    "price": 908,
+    "unitsSold": 306,
+    "date": "2024-01-16",
+    "inStock": 61
+  },
+  {
+    "id": 156,
+    "name": "LG Laptop 574",
+    "category": "Electronics",
+    "price": 943,
+    "unitsSold": 330,
+    "date": "2024-01-18",
+    "inStock": 86
+  },
+  {
+    "id": 157,
+    "name": "Levi's Phone 954",
+    "category": "Home",
+    "price": 426,
+    "unitsSold": 441,
+    "date": "2024-01-28",
+    "inStock": 30
+  },
+  {
+    "id": 158,
+    "name": "LG Hoodie 352",
+    "category": "Home",
+    "price": 942,
+    "unitsSold": 102,
+    "date": "2024-01-14",
+    "inStock": 72
+  },
+  {
+    "id": 159,
+    "name": "Levi's Monitor 418",
+    "category": "Home",
+    "price": 1234,
+    "unitsSold": 347,
+    "date": "2024-01-23",
+    "inStock": 22
+  },
+  {
+    "id": 160,
+    "name": "LG Table 839",
+    "category": "Electronics",
+    "price": 1017,
+    "unitsSold": 274,
+    "date": "2024-01-28",
+    "inStock": 70
+  },
+  {
+    "id": 161,
+    "name": "Levi's TV 523",
+    "category": "Home",
+    "price": 1717,
+    "unitsSold": 300,
+    "date": "2024-01-03",
+    "inStock": 25
+  },
+  {
+    "id": 162,
+    "name": "HP Jeans 594",
+    "category": "Electronics",
+    "price": 1260,
+    "unitsSold": 393,
+    "date": "2024-01-31",
+    "inStock": 32
+  },
+  {
+    "id": 163,
+    "name": "Dell Sneakers 415",
+    "category": "Electronics",
+    "price": 1023,
+    "unitsSold": 456,
+    "date": "2024-01-09",
+    "inStock": 63
+  },
+  {
+    "id": 164,
+    "name": "Adidas Hoodie 897",
+    "category": "Fashion",
+    "price": 1685,
+    "unitsSold": 401,
+    "date": "2024-01-12",
+    "inStock": 100
+  },
+  {
+    "id": 165,
+    "name": "Nike Phone 308",
+    "category": "Electronics",
+    "price": 1485,
+    "unitsSold": 102,
+    "date": "2024-01-01",
+    "inStock": 19
+  },
+  {
+    "id": 166,
+    "name": "Adidas TV 794",
+    "category": "Fashion",
+    "price": 1112,
+    "unitsSold": 242,
+    "date": "2024-01-01",
+    "inStock": 38
+  },
+  {
+    "id": 167,
+    "name": "Samsung Backpack 123",
+    "category": "Electronics",
+    "price": 1239,
+    "unitsSold": 397,
+    "date": "2024-01-06",
+    "inStock": 84
+  },
+  {
+    "id": 168,
+    "name": "HP Laptop 910",
+    "category": "Home",
+    "price": 1582,
+    "unitsSold": 367,
+    "date": "2024-01-29",
+    "inStock": 14
+  },
+  {
+    "id": 169,
+    "name": "Dell Monitor 354",
+    "category": "Fashion",
+    "price": 1591,
+    "unitsSold": 480,
+    "date": "2024-01-27",
+    "inStock": 86
+  },
+  {
+    "id": 170,
+    "name": "Adidas Backpack 333",
+    "category": "Home",
+    "price": 1310,
+    "unitsSold": 313,
+    "date": "2024-01-01",
+    "inStock": 17
+  },
+  {
+    "id": 171,
+    "name": "LG Table 191",
+    "category": "Electronics",
+    "price": 1036,
+    "unitsSold": 216,
+    "date": "2024-01-29",
+    "inStock": 52
+  },
+  {
+    "id": 172,
+    "name": "Nike Hoodie 148",
+    "category": "Home",
+    "price": 1358,
+    "unitsSold": 205,
+    "date": "2024-01-22",
+    "inStock": 67
+  },
+  {
+    "id": 173,
+    "name": "Dell Sneakers 172",
+    "category": "Home",
+    "price": 674,
+    "unitsSold": 330,
+    "date": "2024-01-10",
+    "inStock": 14
+  },
+  {
+    "id": 174,
+    "name": "Apple Phone 523",
+    "category": "Fashion",
+    "price": 1364,
+    "unitsSold": 124,
+    "date": "2024-01-10",
+    "inStock": 100
+  },
+  {
+    "id": 175,
+    "name": "Nike Desk 124",
+    "category": "Fashion",
+    "price": 1209,
+    "unitsSold": 390,
+    "date": "2024-01-25",
+    "inStock": 28
+  },
+  {
+    "id": 176,
+    "name": "LG Monitor 545",
+    "category": "Home",
+    "price": 1360,
+    "unitsSold": 347,
+    "date": "2024-01-18",
+    "inStock": 7
+  },
+  {
+    "id": 177,
+    "name": "LG Desk 302",
+    "category": "Electronics",
+    "price": 375,
+    "unitsSold": 239,
+    "date": "2024-01-29",
+    "inStock": 22
+  },
+  {
+    "id": 178,
+    "name": "Dell Table 751",
+    "category": "Fashion",
+    "price": 1933,
+    "unitsSold": 380,
+    "date": "2024-01-25",
+    "inStock": 32
+  },
+  {
+    "id": 179,
+    "name": "Dell Sneakers 321",
+    "category": "Fashion",
+    "price": 1463,
+    "unitsSold": 67,
+    "date": "2024-01-16",
+    "inStock": 60
+  },
+  {
+    "id": 180,
+    "name": "Nike Hoodie 870",
+    "category": "Fashion",
+    "price": 380,
+    "unitsSold": 290,
+    "date": "2024-01-09",
+    "inStock": 5
+  },
+  {
+    "id": 181,
+    "name": "HP Backpack 261",
+    "category": "Electronics",
+    "price": 168,
+    "unitsSold": 278,
+    "date": "2024-01-29",
+    "inStock": 80
+  },
+  {
+    "id": 182,
+    "name": "Samsung TV 846",
+    "category": "Fashion",
+    "price": 535,
+    "unitsSold": 129,
+    "date": "2024-01-03",
+    "inStock": 79
+  },
+  {
+    "id": 183,
+    "name": "HP Jeans 660",
+    "category": "Fashion",
+    "price": 350,
+    "unitsSold": 196,
+    "date": "2024-01-01",
+    "inStock": 31
+  },
+  {
+    "id": 184,
+    "name": "Apple Monitor 528",
+    "category": "Electronics",
+    "price": 1045,
+    "unitsSold": 190,
+    "date": "2024-01-28",
+    "inStock": 67
+  },
+  {
+    "id": 185,
+    "name": "Sony TV 938",
+    "category": "Electronics",
+    "price": 474,
+    "unitsSold": 92,
+    "date": "2024-01-13",
+    "inStock": 38
+  },
+  {
+    "id": 186,
+    "name": "Dell Backpack 566",
+    "category": "Electronics",
+    "price": 1808,
+    "unitsSold": 245,
+    "date": "2024-01-17",
+    "inStock": 35
+  },
+  {
+    "id": 187,
+    "name": "Sony Desk 250",
+    "category": "Fashion",
+    "price": 409,
+    "unitsSold": 259,
+    "date": "2024-01-14",
+    "inStock": 41
+  },
+  {
+    "id": 188,
+    "name": "Levi's Laptop 516",
+    "category": "Fashion",
+    "price": 1554,
+    "unitsSold": 107,
+    "date": "2024-01-20",
+    "inStock": 92
+  },
+  {
+    "id": 189,
+    "name": "Adidas Desk 838",
+    "category": "Home",
+    "price": 888,
+    "unitsSold": 111,
+    "date": "2024-01-11",
+    "inStock": 46
+  },
+  {
+    "id": 190,
+    "name": "IKEA Backpack 541",
+    "category": "Home",
+    "price": 1536,
+    "unitsSold": 104,
+    "date": "2024-01-04",
+    "inStock": 44
+  },
+  {
+    "id": 191,
+    "name": "Apple TV 292",
+    "category": "Home",
+    "price": 1905,
+    "unitsSold": 194,
+    "date": "2024-01-10",
+    "inStock": 85
+  },
+  {
+    "id": 192,
+    "name": "HP Jeans 691",
+    "category": "Home",
+    "price": 1165,
+    "unitsSold": 488,
+    "date": "2024-01-22",
+    "inStock": 6
+  },
+  {
+    "id": 193,
+    "name": "Nike Laptop 202",
+    "category": "Fashion",
+    "price": 463,
+    "unitsSold": 494,
+    "date": "2024-01-18",
+    "inStock": 98
+  },
+  {
+    "id": 194,
+    "name": "Samsung Backpack 762",
+    "category": "Home",
+    "price": 425,
+    "unitsSold": 258,
+    "date": "2024-01-01",
+    "inStock": 55
+  },
+  {
+    "id": 195,
+    "name": "Levi's Phone 403",
+    "category": "Electronics",
+    "price": 1904,
+    "unitsSold": 193,
+    "date": "2024-01-04",
+    "inStock": 24
+  },
+  {
+    "id": 196,
+    "name": "Adidas TV 411",
+    "category": "Fashion",
+    "price": 578,
+    "unitsSold": 412,
+    "date": "2024-01-15",
+    "inStock": 87
+  },
+  {
+    "id": 197,
+    "name": "Sony Phone 948",
+    "category": "Home",
+    "price": 738,
+    "unitsSold": 294,
+    "date": "2024-01-13",
+    "inStock": 91
+  },
+  {
+    "id": 198,
+    "name": "IKEA Desk 940",
+    "category": "Electronics",
+    "price": 1600,
+    "unitsSold": 222,
+    "date": "2024-01-16",
+    "inStock": 32
+  },
+  {
+    "id": 199,
+    "name": "Nike Desk 631",
+    "category": "Electronics",
+    "price": 1548,
+    "unitsSold": 382,
+    "date": "2024-01-26",
+    "inStock": 83
+  },
+  {
+    "id": 200,
+    "name": "Sony Phone 834",
+    "category": "Home",
+    "price": 227,
+    "unitsSold": 189,
+    "date": "2024-01-18",
+    "inStock": 27
+  }
+]

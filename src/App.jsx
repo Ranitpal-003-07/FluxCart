@@ -4,7 +4,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 import Home from './pages/Home';
 import Auth from './pages/Login';
-import EcommerceDashboard from './pages/Dashboard';
+import Dashboard from './pages/Dashboard';
 import HowToUse from './pages/HowToUse';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
           <Route path="/signup" element={<Auth isSignUp />} />
 
           <Route element={<ProtectedRoute />}>
-            <Route path="/dashboard" element={<EcommerceDashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/how-to-use" element={<HowToUse />} />
           </Route>
 
