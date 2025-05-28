@@ -1,45 +1,102 @@
+/* eslint-disable no-unused-vars */
 import {
+  VStack,
+  Text,
+  Card,
+  CardBody,
   Flex,
   Icon,
   useColorModeValue,
-  Card,
-  CardBody,
-  Stat,
-  StatLabel,
-  StatNumber,
-  StatHelpText,
-  StatArrow,
- 
 } from '@chakra-ui/react';
 
+const StatCard = ({ label, value, icon, gradientKey, isLarge = false, suffix = '', prefix = '' })=>{
+   // Theme-aware color values
+    const cardBg = useColorModeValue('white', 'gray.800');
+    const textColor = useColorModeValue('gray.800', 'white');
+    const subtleTextColor = useColorModeValue('gray.600', 'gray.300');
 
 
 
-const StatCard = ({ icon, label, value, change, isPositive }) => {
-  const cardBg = useColorModeValue('white', 'gray.800');
-  const borderColor = useColorModeValue('gray.200', 'gray.700');
+   const lightGradients = {
+    revenue: 'linear(135deg, #FFE5F1 0%, #FFE5E5 50%, #E5F3FF 100%)',
+    units: 'linear(135deg, #E5F8FF 0%, #E5F0FF 50%, #F0E5FF 100%)',
+    price: 'linear(135deg, #F0FFE5 0%, #E5FFF0 50%, #E5FFFA 100%)',
+    overall: 'linear(135deg, #FFE5E5 0%, #E5E5FF 50%, #E5FFE5 100%)',
+    stock: 'linear(135deg, #FFF0E5 0%, #FFFFE5 50%, #F0FFE5 100%)',
+    alert: 'linear(135deg, #FFE5E5 0%, #FFF0E5 50%, #FFE5F0 100%)',
+    electronics: 'linear(135deg, #E5F0FF 0%, #F0E5FF 50%, #FFE5F0 100%)',
+    fashion: 'linear(135deg, #FFE5F0 0%, #E5FFF0 50%, #E5F0FF 100%)',
+    home: 'linear(135deg, #E5FFF0 0%, #F0FFE5 50%, #FFE5E5 100%)',
+  };
+
+  const darkGradients = {
+    revenue: 'linear(135deg, #2D1B3D 0%, #3D2D1B 50%, #1B3D2D 100%)',
+    units: 'linear(135deg, #1B2D3D 0%, #2D1B3D 50%, #3D1B2D 100%)',
+    price: 'linear(135deg, #2D3D1B 0%, #1B3D2D 50%, #1B2D3D 100%)',
+    overall: 'linear(135deg, #3D1B1B 0%, #1B1B3D 50%, #1B3D1B 100%)',
+    stock: 'linear(135deg, #3D2D1B 0%, #3D3D1B 50%, #2D3D1B 100%)',
+    alert: 'linear(135deg, #3D1B1B 0%, #3D2D1B 50%, #3D1B2D 100%)',
+    electronics: 'linear(135deg, #1B2D3D 0%, #2D1B3D 50%, #3D1B2D 100%)',
+    fashion: 'linear(135deg, #3D1B2D 0%, #1B3D2D 50%, #1B2D3D 100%)',
+    home: 'linear(135deg, #1B3D2D 0%, #2D3D1B 50%, #3D1B1B 100%)',
+  };
+
+  const gradients = useColorModeValue(lightGradients, darkGradients);
   
-  return (
-    <Card bg={cardBg} borderWidth="1px" borderColor={borderColor} shadow="lg">
-      <CardBody>
-        <Stat>
-          <Flex justify="space-between" align="center" mb={2}>
-            <StatLabel fontSize="sm" color="gray.500">
+
+
+  return(
+    <Card
+      bg={cardBg}
+      bgGradient={gradients[gradientKey]}
+      borderRadius="2xl"
+      boxShadow={useColorModeValue(
+        "0 4px 20px rgba(0,0,0,0.08)", 
+        "0 4px 20px rgba(0,0,0,0.3)"
+      )}
+      border="1px solid"
+      borderColor={useColorModeValue("white", "gray.700")}
+      backdropFilter="blur(10px)"
+      transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+      _hover={{
+        transform: 'translateY(-4px) scale(1.02)',
+        boxShadow: useColorModeValue(
+          "0 8px 30px rgba(0,0,0,0.12)", 
+          "0 8px 30px rgba(0,0,0,0.4)"
+        ),
+      }}
+    >
+      <CardBody p={6}>
+        <VStack spacing={3} align="stretch">
+          <Flex justify="space-between" align="center">
+            <Text 
+              fontSize="xs" 
+              fontWeight="600" 
+              color={subtleTextColor}
+              textTransform="uppercase" 
+              letterSpacing="wider"
+              noOfLines={1}
+            >
               {label}
-            </StatLabel>
-            <Icon as={icon} color="blue.500" boxSize={5} />
+            </Text>
+            <Icon 
+              as={icon} 
+              color={useColorModeValue("gray.600", "gray.400")} 
+              boxSize={isLarge ? 7 : 5} 
+            />
           </Flex>
-          <StatNumber fontSize="2xl" fontWeight="bold">
-            {value}
-          </StatNumber>
-          <StatHelpText mb={0}>
-            <StatArrow type={isPositive ? 'increase' : 'decrease'} />
-            {change}
-          </StatHelpText>
-        </Stat>
+          <Text
+            fontSize={isLarge ? "3xl" : "2xl"}
+            fontWeight="700"
+            color={textColor}
+            letterSpacing="tight"
+            noOfLines={1}
+          >
+            {prefix}{typeof value === 'number' ? value.toLocaleString() : value}{suffix}
+          </Text>
+        </VStack>
       </CardBody>
     </Card>
   );
-};
-
+}
 export default StatCard;
