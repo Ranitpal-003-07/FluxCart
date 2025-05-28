@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/rules-of-hooks */
 import {
   Box,
@@ -20,6 +21,7 @@ import {
 import { Home, User, HelpCircle, Menu } from 'lucide-react';
 import { Image } from '@chakra-ui/image';
 import logo from '../assets/main logo.png';
+import { useAuth } from '../context/AuthContext'; 
 
 const Sidebar = ({ activeTab, setActiveTab }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -29,6 +31,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
     'linear-gradient(135deg, #F4E285 0%, #F4A261 100%)',  
     'linear-gradient(135deg, #1a0b3d 0%, #2d1b69 25%, #3730a3 50%, #1e3a8a 75%, #1e40af 100%)'
   );
+  const { currentUser, updateUserProfile } = useAuth();
 
   const textColor = useColorModeValue('gray.800', 'gray.100');
   const accentColor = useColorModeValue('#FFB347', '#a855f7');
@@ -209,6 +212,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
               <VStack align="start" spacing={0}>
                 <Text fontSize="sm" fontWeight="semibold" color={textColor}>
                   Welcome back!
+                  { currentUser.name ||currentUser.displayName || ' User' }
                 </Text>
                 <Text fontSize="xs" color={useColorModeValue("whiteAlpha.700", "whiteAlpha.600")}>
                   Manage your store
