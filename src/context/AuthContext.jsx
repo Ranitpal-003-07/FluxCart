@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable no-useless-catch */
 import { createContext, useContext, useEffect, useState } from 'react';
@@ -7,9 +8,14 @@ import {
   signOut,
   onAuthStateChanged,
   GoogleAuthProvider,
-  signInWithPopup
+  signInWithPopup,
+  updateProfile,
+  updateEmail,
+  updatePassword,
+  reauthenticateWithCredential,
+  EmailAuthProvider
 } from 'firebase/auth';
-import { auth } from '../firebase'; 
+import { auth } from '../firebase';
 
 const AuthContext = createContext();
 
@@ -18,16 +24,24 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
-    });
-    return () => unsubscribe();
+  const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+    if (currentUser) {
+      await currentUser.reload();
+      setUser({ ...auth.currentUser });
+    } else {
+      setUser(null);
+    }
+    setLoading(false);
+  });
+  return () => unsubscribe();
   }, []);
+
+
 
   const signup = async (email, password) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      setUser(userCredential.user);
       return userCredential;
     } catch (error) {
       throw error;
@@ -37,6 +51,7 @@ export function AuthProvider({ children }) {
   const login = async (email, password) => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      setUser(userCredential.user);
       return userCredential;
     } catch (error) {
       throw error;
@@ -47,20 +62,61 @@ export function AuthProvider({ children }) {
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
+      setUser(result.user);
       return result;
     } catch (error) {
       throw error;
     }
   };
 
-  // Logout
   const logout = async () => {
     try {
       await signOut(auth);
+      setUser(null);
     } catch (error) {
       throw error;
     }
   };
+
+ const updateUserProfile = async (updates) => {
+  try {
+    await auth.currentUser?.reload(); // Ensure we have the latest user info
+    const currentUser = auth.currentUser; // ✅ Define it here
+
+    if (!currentUser) throw new Error('No authenticated user');
+
+    const profileUpdates = {};
+    if (updates.displayName) profileUpdates.displayName = updates.displayName;
+    if (updates.photoURL) profileUpdates.photoURL = updates.photoURL;
+
+    if (Object.keys(profileUpdates).length) {
+      await updateProfile(currentUser, profileUpdates);
+    }
+
+    if (updates.email) {
+      throw new Error('Changing email requires re-authentication');
+      // const credential = EmailAuthProvider.credential(currentUser.email, currentPassword);
+      // await reauthenticateWithCredential(currentUser, credential);
+      // await updateEmail(currentUser, updates.email);
+    }
+
+    if (updates.password) {
+      throw new Error('Changing password requires re-authentication');
+      // const credential = EmailAuthProvider.credential(currentUser.email, currentPassword);
+      // await reauthenticateWithCredential(currentUser, credential);
+      // await updatePassword(currentUser, updates.password);
+    }
+
+    // Refresh user state with latest Firebase user info
+    setUser({ ...auth.currentUser });
+
+    return true;
+  } catch (error) {
+    console.error("Error updating profile:", error.message);
+    throw error;
+  }
+};
+
 
   const value = {
     user,
@@ -68,7 +124,9 @@ export function AuthProvider({ children }) {
     login,
     logout,
     googleSignIn,
-    loading
+    loading,
+    updateUserProfile,
+    currentUser: auth.currentUser,
   };
 
   return (

@@ -28,6 +28,9 @@ import { keyframes } from '@emotion/react';
 import { FaUser } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom'; 
+import { signInWithPopup, GoogleAuthProvider, updateProfile } from 'firebase/auth';
+import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { auth, db } from '../firebase'; // update with your firebase config path
 
 const float = keyframes`
   0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -218,80 +221,111 @@ export default function Auth() {
         return 'An error occurred. Please try again.';
     }
   };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!validateForm()) return;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!validateForm()) return;
-    
-    setIsLoading(true);
-    
-    try {
-      if (isLogin) {
-        await login(formData.email, formData.password);
-        toast({
-          title: 'Login Successful',
-          description: 'Welcome back!',
-          status: 'success',
-          duration: 3000,
-          isClosable: true,
-          position: 'top'
-        });
-        navigate('/dashboard');
-      } else {
-        await signup(formData.email, formData.password);
-        toast({
-          title: 'Account Created',
-          description: 'Your account has been created successfully!',
-          status: 'success',
-          duration: 3000,
-          isClosable: true,
-          position: 'top'
-        });
-        navigate('/dashboard');
+  setIsLoading(true);
+
+  try {
+    let userCredential;
+
+    if (isLogin) {
+      userCredential = await login(formData.email, formData.password);
+    } else {
+      userCredential = await signup(formData.email, formData.password);
+
+      // Update display name
+      if (formData.name) {
+        await updateProfile(userCredential.user, { displayName: formData.name });
       }
-    } catch (error) {
-      console.error('Auth error:', error);
-      toast({
-        title: 'Authentication Error',
-        description: getFirebaseErrorMessage(error.code),
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
-        position: 'top'
-      });
-    } finally {
-      setIsLoading(false);
     }
-  };
 
-  const handleGoogleSignIn = async () => {
-    try {
-      setIsLoading(true);
-      await googleSignIn();
-      toast({
-        title: 'Google Sign In Successful',
-        description: 'Welcome!',
-        status: 'success',
-        duration: 3000,
-        isClosable: true,
-        position: 'top'
+    const user = userCredential.user;
+    const userRef = doc(db, 'users', user.uid);
+    const userSnap = await getDoc(userRef);
+
+    if (!userSnap.exists()) {
+      await setDoc(userRef, {
+        uid: user.uid,
+        name: user.displayName || formData.name || '',
+        email: user.email,
+        createdAt: serverTimestamp(),
+        authProvider: 'email',
       });
-      navigate('/dashboard');
-    } catch (error) {
-      console.error('Google sign-in error:', error);
-      toast({
-        title: 'Google Sign In Failed',
-        description: getFirebaseErrorMessage(error.code),
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
-        position: 'top'
-      });
-    } finally {
-      setIsLoading(false);
     }
-  };
+
+    toast({
+      title: isLogin ? 'Login Successful' : 'Account Created',
+      description: isLogin ? 'Welcome back!' : 'Your account has been created successfully!',
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+      position: 'top',
+    });
+
+    navigate('/dashboard');
+  } catch (error) {
+    console.error('Auth error:', error);
+    toast({
+      title: 'Authentication Error',
+      description: getFirebaseErrorMessage(error.code),
+      status: 'error',
+      duration: 5000,
+      isClosable: true,
+      position: 'top',
+    });
+  } finally {
+    setIsLoading(false);
+  }
+};
+
+const handleGoogleSignIn = async () => {
+  setIsLoading(true);
+
+  try {
+    const provider = new GoogleAuthProvider();
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+
+    const userRef = doc(db, 'users', user.uid);
+    const userSnap = await getDoc(userRef);
+
+    if (!userSnap.exists()) {
+      await setDoc(userRef, {
+        uid: user.uid,
+        name: user.displayName || '',
+        email: user.email,
+        createdAt: serverTimestamp(),
+        authProvider: 'google',
+      });
+    }
+
+    toast({
+      title: 'Google Sign In Successful',
+      description: 'Welcome!',
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+      position: 'top',
+    });
+
+    navigate('/dashboard');
+  } catch (error) {
+    console.error('Google sign-in error:', error);
+    toast({
+      title: 'Google Sign In Failed',
+      description: getFirebaseErrorMessage(error.code),
+      status: 'error',
+      duration: 5000,
+      isClosable: true,
+      position: 'top',
+    });
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 
   const toggleMode = () => {
     setIsLogin(!isLogin);

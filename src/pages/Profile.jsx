@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   VStack,
@@ -26,6 +26,9 @@ import {
   ModalCloseButton,
   FormControl,
   FormLabel,
+  Spinner,
+  Badge,
+  Divider,
 } from '@chakra-ui/react';
 import {
   EditIcon,
@@ -33,19 +36,29 @@ import {
   CloseIcon,
   MoonIcon,
   SunIcon,
+  CalendarIcon,
+  EmailIcon,
 } from '@chakra-ui/icons';
+import { useAuth } from '../context/AuthContext'; // Adjust import path as needed
 
 const Profile = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const { currentUser, updateUserProfile } = useAuth();
+  
   // Profile data state
   const [profile, setProfile] = useState({
-    name: 'Alexandra Chen',
-    email: 'alexandra.chen@techcorp.com',
-    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b47c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+    name: '',
+    email: '',
+    avatar: '',
+    authProvider: '',
+    createdAt: null,
+    uid: '',
   });
+  
+  const [loading, setLoading] = useState(true);
+  const [updating, setUpdating] = useState(false);
 
   // Edit states
   const [editField, setEditField] = useState(null);
@@ -76,24 +89,90 @@ const Profile = () => {
     '0 0 20px rgba(139, 92, 246, 0.4)'
   );
 
+  // Format date helper
+  const formatDate = (timestamp) => {
+    if (!timestamp) return 'Unknown';
+    
+    let date;
+    if (timestamp.toDate) {
+      // Firestore timestamp
+      date = timestamp.toDate();
+    } else if (timestamp.seconds) {
+      // Firestore timestamp object
+      date = new Date(timestamp.seconds * 1000);
+    } else {
+      // Regular date
+      date = new Date(timestamp);
+    }
+    
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  };
+
+  // Set profile from auth context and user data
+  useEffect(() => {
+    if (currentUser) {
+      setProfile({
+        name: currentUser.displayName || currentUser.name || 'Ranit Pal',
+        email: currentUser.email || 'ranitpal699@gmail.com',
+        avatar: currentUser.photoURL || 'https://images.unsplash.com/photo-1494790108755-2616b612b47c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+        authProvider: currentUser.authProvider || 'google',
+        createdAt: currentUser.createdAt || new Date('2025-05-28T13:37:22.000Z'),
+        uid: currentUser.uid || '190uRP4LWHMgAaKDOZU28qnNmq23',
+      });
+      setLoading(false);
+    }
+  }, [currentUser]);
+
   const handleEdit = (field, value) => {
     setEditField(field);
     setTempValue(value);
   };
 
-  const handleSave = (field) => {
-    if (tempValue.trim()) {
+  const handleSave = async (field) => {
+    if (!tempValue.trim()) return;
+    
+    setUpdating(true);
+    try {
+      let updateData = {};
+      
+      if (field === 'name') {
+        updateData = { displayName: tempValue, name: tempValue };
+      }
+      // Note: Changing email requires re-authentication in Firebase
+      // else if (field === 'email') {
+      //   updateData = { email: tempValue };
+      // }
+      
+      await updateUserProfile(updateData);
+      
       setProfile(prev => ({ ...prev, [field]: tempValue }));
+      
       toast({
         title: 'Profile Updated',
-        description: `${field.charAt(0).toUpperCase() + field.slice(1)} has been updated successfully.`,
+        description: `${field === 'name' ? 'Display name' : 'Email'} has been updated successfully.`,
         status: 'success',
         duration: 2000,
         isClosable: true,
       });
+    } catch (error) {
+      toast({
+        title: 'Update Failed',
+        description: error.message,
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
+    } finally {
+      setEditField(null);
+      setTempValue('');
+      setUpdating(false);
     }
-    setEditField(null);
-    setTempValue('');
   };
 
   const handleCancel = () => {
@@ -101,9 +180,15 @@ const Profile = () => {
     setTempValue('');
   };
 
-  const handleAvatarSave = () => {
-    if (tempAvatar.trim()) {
+  const handleAvatarSave = async () => {
+    if (!tempAvatar.trim()) return;
+    
+    setUpdating(true);
+    try {
+      await updateUserProfile({ photoURL: tempAvatar });
+      
       setProfile(prev => ({ ...prev, avatar: tempAvatar }));
+      
       toast({
         title: 'Profile Picture Updated',
         description: 'Your profile picture has been updated successfully.',
@@ -111,14 +196,39 @@ const Profile = () => {
         duration: 2000,
         isClosable: true,
       });
+    } catch (error) {
+      toast({
+        title: 'Update Failed',
+        description: error.message,
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
+    } finally {
+      setTempAvatar('');
+      onClose();
+      setUpdating(false);
     }
-    setTempAvatar('');
-    onClose();
   };
 
   const handleAvatarOpen = () => {
     setTempAvatar(profile.avatar);
     onOpen();
+  };
+
+  const getProviderColor = (provider) => {
+    switch (provider.toLowerCase()) {
+      case 'google':
+        return 'red';
+      case 'facebook':
+        return 'blue';
+      case 'twitter':
+        return 'twitter';
+      case 'github':
+        return 'gray';
+      default:
+        return 'gray';
+    }
   };
 
   const EditableField = ({ field, value, placeholder }) => {
@@ -140,14 +250,16 @@ const Profile = () => {
               _focus={{ boxShadow: '0 0 0 1px rgba(139, 92, 246, 0.6)' }}
               autoFocus
               flex={1}
+              isDisabled={updating}
             />
             <HStack>
               <IconButton
-                icon={<CheckIcon />}
+                icon={updating ? <Spinner size="sm" /> : <CheckIcon />}
                 size="md"
                 colorScheme="green"
                 onClick={() => handleSave(field)}
                 aria-label="Save"
+                isDisabled={updating}
               />
               <IconButton
                 icon={<CloseIcon />}
@@ -155,6 +267,7 @@ const Profile = () => {
                 colorScheme="red"
                 onClick={handleCancel}
                 aria-label="Cancel"
+                isDisabled={updating}
               />
             </HStack>
           </>
@@ -173,12 +286,15 @@ const Profile = () => {
               opacity={0.7}
               _hover={{ opacity: 1, transform: 'scale(1.1)' }}
               transition="all 0.2s"
+              isDisabled={updating || loading}
             />
           </>
         )}
       </HStack>
     );
   };
+
+ 
 
   return (
     <Box
@@ -285,6 +401,7 @@ const Profile = () => {
                       boxShadow: "0 6px 16px rgba(0, 0, 0, 0.4)"
                     }}
                     transition="all 0.2s"
+                    isDisabled={updating}
                   />
                 </Box>
 
@@ -309,12 +426,88 @@ const Profile = () => {
                     <Text fontSize="md" color={mutedColor} mb={3} fontWeight="semibold">
                       Email Address
                     </Text>
-                    <EditableField
-                      field="email"
-                      value={profile.email}
-                      placeholder="Enter your email address"
-                    />
+                    <HStack spacing={3} align="center" w="full">
+                      <EmailIcon color={mutedColor} />
+                      <Text flex={1} color={textColor} fontSize="lg" fontWeight="medium">
+                        {profile.email}
+                      </Text>
+                      <IconButton
+                        icon={<EditIcon />}
+                        size="md"
+                        variant="ghost"
+                        colorScheme="blue"
+                        aria-label="Edit email"
+                        opacity={0.7}
+                        _hover={{ opacity: 1, transform: 'scale(1.1)' }}
+                        transition="all 0.2s"
+                        isDisabled={true}
+                        title="Email change requires re-authentication"
+                      />
+                    </HStack>
+                    <Text fontSize="sm" color="gray.500" mt={1}>
+                      Changing email requires re-authentication
+                    </Text>
                   </Box>
+
+                  <Divider />
+
+                  {/* Account Details Section */}
+                  <VStack spacing={6} w="full" align="stretch">
+                    <Heading size="md" color={textColor} textAlign="center">
+                      Account Details
+                    </Heading>
+
+                    <Box w="full">
+                      <Text fontSize="md" color={mutedColor} mb={3} fontWeight="semibold">
+                        Authentication Provider
+                      </Text>
+                      <HStack spacing={3} align="center" w="full">
+                        <Badge 
+                          colorScheme={getProviderColor(profile.authProvider)} 
+                          variant="solid" 
+                          px={3} 
+                          py={1} 
+                          borderRadius="full"
+                          textTransform="capitalize"
+                          fontSize="sm"
+                        >
+                          {profile.authProvider}
+                        </Badge>
+                      </HStack>
+                    </Box>
+
+                    <Box w="full">
+                      <Text fontSize="md" color={mutedColor} mb={3} fontWeight="semibold">
+                        Account Created
+                      </Text>
+                      <HStack spacing={3} align="center" w="full">
+                        <CalendarIcon color={mutedColor} />
+                        <Text color={textColor} fontSize="lg" fontWeight="medium">
+                          {formatDate(profile.createdAt)}
+                        </Text>
+                      </HStack>
+                    </Box>
+
+                    <Box w="full">
+                      <Text fontSize="md" color={mutedColor} mb={3} fontWeight="semibold">
+                        User ID
+                      </Text>
+                      <HStack spacing={3} align="center" w="full">
+                        <Text 
+                          color={textColor} 
+                          fontSize="sm" 
+                          fontFamily="mono" 
+                          bg={useColorModeValue('gray.100', 'gray.700')}
+                          px={3}
+                          py={2}
+                          borderRadius="md"
+                          wordBreak="break-all"
+                        >
+                          {profile.uid}
+                        </Text>
+                      </HStack>
+                    </Box>
+                  </VStack>
                 </VStack>
               </VStack>
             </CardBody>
@@ -361,6 +554,7 @@ const Profile = () => {
                   focusBorderColor="purple.400"
                   _focus={{ boxShadow: '0 0 0 1px rgba(139, 92, 246, 0.6)' }}
                   size="lg"
+                  isDisabled={updating}
                 />
               </FormControl>
               
@@ -371,6 +565,8 @@ const Profile = () => {
                   onClick={handleAvatarSave}
                   _hover={{ transform: 'translateY(-2px)' }}
                   transition="all 0.2s"
+                  isLoading={updating}
+                  loadingText="Saving..."
                 >
                   Save Changes
                 </Button>
@@ -380,6 +576,7 @@ const Profile = () => {
                   variant="ghost"
                   _hover={{ transform: 'translateY(-2px)' }}
                   transition="all 0.2s"
+                  isDisabled={updating}
                 >
                   Cancel
                 </Button>
