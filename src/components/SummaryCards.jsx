@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import{ useState, useMemo} from 'react';
+import { useMemo } from 'react';
 import {
   VStack,
   SimpleGrid,
@@ -9,30 +9,48 @@ import {
   useColorModeValue,
   Container,
 } from '@chakra-ui/react';
-import { TrendingUp, DollarSign, ShoppingCart, Target, Package, AlertTriangle} from 'lucide-react';
-import productData from '../products.json';
-import StatCard from './StatCard'; 
+import { TrendingUp, DollarSign, ShoppingCart, Target, Package, AlertTriangle } from 'lucide-react';
+import { useProducts } from '../context/ProductContext'; 
+import StatCard from './StatCard';
 import CategoryCard from './CategoryCard';
 
 const SummaryCards = () => {
-  const [products, setProducts] = useState(productData);
-  const [selectedCategories, setSelectedCategories] = useState(['Electronics', 'Fashion', 'Home']);
+  // Get data from ProductsContext
+  const { 
+    products, 
+    selectedCategories, 
+    showLowStock,
+    lowStockThreshold
+  } = useProducts();
 
-  // Filtered and processed data
+  // Filter products based only on selected categories
   const filteredProducts = useMemo(() => {
-    return products.filter(product => {
-      const matchesCategory = selectedCategories.includes(product.category);
-      return matchesCategory;
-    });
+    if (!selectedCategories || selectedCategories.length === 0) {
+      return products;
+    }
+    return products.filter(product => 
+      selectedCategories.includes(product.category)
+    );
   }, [products, selectedCategories]);
 
   // Chart data processing for categories
   const chartData = useMemo(() => {
-    const categoryData = selectedCategories.map(category => {
+    if (!selectedCategories || selectedCategories.length === 0) {
+      return [];
+    }
+    
+    return selectedCategories.map(category => {
       const categoryProducts = filteredProducts.filter(p => p.category === category);
       const totalRevenue = categoryProducts.reduce((sum, p) => sum + (p.price * p.unitsSold), 0);
       const totalUnits = categoryProducts.reduce((sum, p) => sum + p.unitsSold, 0);
-      const avgPrice = categoryProducts.length > 0 ? categoryProducts.reduce((sum, p) => sum + p.price, 0) / categoryProducts.length : 0;
+      const avgPrice = categoryProducts.length > 0 
+        ? categoryProducts.reduce((sum, p) => sum + p.price, 0) / categoryProducts.length 
+        : 0;
+      
+      // Use context values for low stock calculation
+      const lowStockItems = categoryProducts.filter(p => 
+        showLowStock ? p.inStock <= lowStockThreshold : p.inStock < 15
+      ).length;
       
       return {
         category,
@@ -40,28 +58,40 @@ const SummaryCards = () => {
         units: totalUnits,
         avgPrice: Math.round(avgPrice),
         products: categoryProducts.length,
-        lowStock: categoryProducts.filter(p => p.inStock < 15).length
+        lowStock: lowStockItems
       };
     });
-    return categoryData;
-  }, [filteredProducts, selectedCategories]);
+  }, [filteredProducts, selectedCategories, showLowStock, lowStockThreshold]);
 
   // Overall summary metrics
   const overallMetrics = useMemo(() => {
     const totalRevenue = filteredProducts.reduce((sum, p) => sum + (p.price * p.unitsSold), 0);
     const totalUnits = filteredProducts.reduce((sum, p) => sum + p.unitsSold, 0);
-    const avgPrice = filteredProducts.length > 0 ? filteredProducts.reduce((sum, p) => sum + p.price, 0) / filteredProducts.length : 0;
-    const bestCategory = chartData.reduce((max, cat) => cat.revenue > max.revenue ? cat : max, chartData[0] || { category: 'N/A', revenue: 0 });
+    const avgPrice = filteredProducts.length > 0 
+      ? filteredProducts.reduce((sum, p) => sum + p.price, 0) / filteredProducts.length 
+      : 0;
+      
+    const bestCategory = chartData.length > 0 
+      ? chartData.reduce(
+          (max, cat) => cat.revenue > max.revenue ? cat : max, 
+          chartData[0]
+        )
+      : { category: 'N/A', revenue: 0 };
+    
+    // Use context values for low stock calculation
+    const lowStockItems = filteredProducts.filter(p => 
+      showLowStock ? p.inStock <= lowStockThreshold : p.inStock < 15
+    ).length;
     
     return {
       totalRevenue,
       totalUnits,
       avgPrice: Math.round(avgPrice),
       bestCategory: bestCategory?.category || 'N/A',
-      lowStockItems: filteredProducts.filter(p => p.inStock < 15).length,
+      lowStockItems,
       totalProducts: filteredProducts.length
     };
-  }, [filteredProducts, chartData]);
+  }, [filteredProducts, chartData, showLowStock, lowStockThreshold]);
 
   // Theme-aware color values
   const bgColor = useColorModeValue('gray.50', 'gray.900');
@@ -85,7 +115,6 @@ const SummaryCards = () => {
               Performance Dashboard
             </Heading>
             
-            {/* Changed grid layout to max 3 columns for better spacing */}
             <SimpleGrid columns={{ base: 1, sm: 2, lg: 3 }} spacing={6} maxW="6xl" mx="auto">
               <StatCard
                 label="Total Revenue"
@@ -136,7 +165,7 @@ const SummaryCards = () => {
             </SimpleGrid>
           </Box>
 
-          {/* Elegant Divider */}
+          {/* Divider */}
           <Box>
             <Divider 
               borderColor={borderColor}
@@ -159,19 +188,27 @@ const SummaryCards = () => {
               Category Breakdown
             </Heading>
             
-            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
-              {chartData.map((categoryData, index) => (
-                <CategoryCard
-                  key={categoryData.category}
-                  category={categoryData.category}
-                  data={categoryData}
-                  gradientKey={
-                    categoryData.category === 'Electronics' ? 'electronics' :
-                    categoryData.category === 'Fashion' ? 'fashion' : 'home'
-                  }
-                />
-              ))}
-            </SimpleGrid>
+            {chartData.length > 0 ? (
+              <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
+                {chartData.map((categoryData) => (
+                  <CategoryCard
+                    key={categoryData.category}
+                    category={categoryData.category}
+                    data={categoryData}
+                    gradientKey={
+                      categoryData.category === 'Electronics' ? 'electronics' :
+                      categoryData.category === 'Fashion' ? 'fashion' : 'home'
+                    }
+                  />
+                ))}
+              </SimpleGrid>
+            ) : (
+              <Box textAlign="center" py={8}>
+                <Heading size="md" color={textColor} opacity={0.6}>
+                  No categories selected. Please select categories to view the breakdown.
+                </Heading>
+              </Box>
+            )}
           </Box>
         </VStack>
       </Container>
