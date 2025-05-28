@@ -10,10 +10,6 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   updateProfile,
-  updateEmail,
-  updatePassword,
-  reauthenticateWithCredential,
-  EmailAuthProvider
 } from 'firebase/auth';
 import { auth } from '../firebase';
 
@@ -80,8 +76,8 @@ export function AuthProvider({ children }) {
 
  const updateUserProfile = async (updates) => {
   try {
-    await auth.currentUser?.reload(); // Ensure we have the latest user info
-    const currentUser = auth.currentUser; // ✅ Define it here
+    await auth.currentUser?.reload(); 
+    const currentUser = auth.currentUser; 
 
     if (!currentUser) throw new Error('No authenticated user');
 
@@ -95,19 +91,12 @@ export function AuthProvider({ children }) {
 
     if (updates.email) {
       throw new Error('Changing email requires re-authentication');
-      // const credential = EmailAuthProvider.credential(currentUser.email, currentPassword);
-      // await reauthenticateWithCredential(currentUser, credential);
-      // await updateEmail(currentUser, updates.email);
     }
 
     if (updates.password) {
       throw new Error('Changing password requires re-authentication');
-      // const credential = EmailAuthProvider.credential(currentUser.email, currentPassword);
-      // await reauthenticateWithCredential(currentUser, credential);
-      // await updatePassword(currentUser, updates.password);
     }
 
-    // Refresh user state with latest Firebase user info
     setUser({ ...auth.currentUser });
 
     return true;

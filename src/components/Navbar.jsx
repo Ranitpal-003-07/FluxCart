@@ -44,6 +44,7 @@ import {
   HelpCircle
 } from 'lucide-react';
 import {useAuth} from '../context/AuthContext';
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({activeTab}) => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -51,7 +52,7 @@ const Navbar = ({activeTab}) => {
   const [scrollY, setScrollY] = useState(0);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
 
-  const {currentUser} = useAuth();
+  const {currentUser,logout} = useAuth();
    const navBg = useColorModeValue(
     'rgba(255, 255, 255, 0.11)',  
     'rgba(26, 32, 44, 0.45)'     
@@ -90,6 +91,17 @@ const Navbar = ({activeTab}) => {
     { id: 2, title: 'Revenue milestone reached', time: '1h ago', unread: true },
     { id: 3, title: 'System maintenance scheduled', time: '3h ago', unread: false },
   ];
+
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate("/login"); // Redirect user after logout
+    } catch (error) {
+      console.error("Logout failed:", error.message);
+    }
+  };
 
   const unreadCount = notifications.filter(n => n.unread).length;
 
@@ -360,9 +372,9 @@ const Navbar = ({activeTab}) => {
                     Help & Support
                   </MenuItem>
                   <MenuDivider />
-                  <MenuItem icon={<LogOut size={16} />} color="red.500">
+                 <MenuItem icon={<LogOut size={16} />} color="red.500" onClick={handleLogout}>
                     Sign Out
-                  </MenuItem>
+                </MenuItem>
                 </MenuList>
               </Menu>
             </HStack>
