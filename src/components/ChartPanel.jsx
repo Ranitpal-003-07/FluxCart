@@ -29,9 +29,10 @@ import { useProducts } from '../context/ProductContext'; // Import the context h
 import RenderChart from './RenderChart';
 
 const ChartPanel = () => {
-  // Use ProductsContext instead of local state
+
+  //using products context to get products and other data
   const { 
-    products, // Use all products data for charts
+    products, 
     allCategories,
     selectedCategories: contextSelectedCategories,
     setSelectedCategories: setContextSelectedCategories
@@ -57,11 +58,10 @@ const ChartPanel = () => {
   );
 
   const [chartType, setChartType] = useState('bar');
-  // Local selected categories for chart-specific filtering
   const [chartSelectedCategories, setChartSelectedCategories] = useState(allCategories);
   const [dateRange, setDateRange] = useState('30');
 
-  // Use all products and apply chart-specific category filter
+  // Filtering products using use memo and selected catagories
   const chartFilteredProducts = useMemo(() => {
     return products.filter(product => {
       const matchesCategory = chartSelectedCategories.includes(product.category);
@@ -84,7 +84,7 @@ const ChartPanel = () => {
         products: categoryProducts.length
       };
     });
-    return categoryData.filter(data => data.products > 0); // Only include categories with products
+    return categoryData.filter(data => data.products > 0); 
   }, [chartFilteredProducts, chartSelectedCategories]);
 
   const scatterData = useMemo(() => {
@@ -103,12 +103,11 @@ const ChartPanel = () => {
     { value: 'scatter', label: 'Scatter Plot', icon: ArrowUpIcon, gradient: gradientColors.secondary },
   ];
 
-  // Handle category selection for chart
   const handleCategoryChange = (selectedValues) => {
     setChartSelectedCategories(selectedValues);
   };
 
-  // Initialize chart categories when allCategories changes
+  // defining chart 
   useMemo(() => {
     if (allCategories.length > 0 && chartSelectedCategories.length === 0) {
       setChartSelectedCategories(allCategories);
@@ -128,7 +127,7 @@ const ChartPanel = () => {
         <Grid templateColumns={{ base: "1fr", lg: "1fr auto" }} gap={6} alignItems="start">
           
           <Stack direction={{ base: "column", md: "row" }} spacing={4}>
-            {/* Chart Type Buttons */}
+            {/* Chart type selection */}
             <VStack align="start" spacing={2}>
               <Text fontSize="sm" color={mutedTextColor} fontWeight="600">
                 Visualization Type
@@ -163,7 +162,7 @@ const ChartPanel = () => {
               </HStack>
             </VStack>
             
-            {/* Date Range Selector */}
+            {/* time period selector */}
             <FormControl maxW="200px">
               <FormLabel fontSize="sm" color={mutedTextColor} fontWeight="600">
                 Time Period
@@ -188,7 +187,7 @@ const ChartPanel = () => {
               </Select>
             </FormControl>
 
-            {/* Category Selection for Chart */}
+            {/* catagory select */}
             <VStack align="start" spacing={2}>
               <Text fontSize="sm" color={mutedTextColor} fontWeight="600">
                 Chart Categories

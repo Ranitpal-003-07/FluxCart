@@ -122,7 +122,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
       }}
     >
       <VStack spacing={8} align="stretch">
-        {/* Logo Section */}
+        {/* logo */}
         <Flex align="center" justify="center" py={4}>
           <Flex align="center" gap={3}>
             <Box
@@ -154,7 +154,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
           </Flex>
         </Flex>
 
-        {/* Divider */}
+        {/* line */}
         <Box
           height="2px"
           bg={useColorModeValue("whiteAlpha.300", "linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.5), transparent)")}
@@ -162,7 +162,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
           borderRadius="full"
         />
 
-        {/* Navigation */}
+        {/* nav */}
         <VStack spacing={4} align="stretch">
           <SidebarItem
             icon={Home}
@@ -184,7 +184,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
           />
         </VStack>
 
-        {/* Bottom Section */}
+        {/* Btm sec */}
         <Box mt="auto" pt={6}>
           <Box
             bg={useColorModeValue("whiteAlpha.200", "whiteAlpha.150")}

@@ -8,10 +8,10 @@ const DataTable = () => {
 
   return (
       <VStack spacing={6} align="stretch" position="relative" zIndex={1}>
-        {/* Filters Card */}
+        {/* Filters Component */}
         <Filters />
         
-        {/* Data Table */}
+        {/* Table Data component */}
         <TableData />
       </VStack>
   );

@@ -32,24 +32,24 @@ const RenderChart = ({chartType,chartData,scatterData}) => {
     
     const CHART_COLORS = useColorModeValue(
       [
-        '#A78BFA', // Soft purple
-        '#60A5FA', // Soft blue
-        '#34D399', // Soft emerald
-        '#FBBF24', // Soft amber
-        '#F472B6', // Soft pink
-        '#A78BFA', // Soft indigo
-        '#6EE7B7', // Soft green
-        '#FDBA74'  // Soft orange
+        '#A78BFA', 
+        '#60A5FA', 
+        '#34D399', 
+        '#FBBF24', 
+        '#F472B6', 
+        '#A78BFA', 
+        '#6EE7B7', 
+        '#FDBA74'  
       ],
       [
-        '#C4B5FD', // Light purple
-        '#93C5FD', // Light blue
-        '#6EE7B7', // Light emerald
-        '#FDE047', // Light yellow
-        '#F9A8D4', // Light pink
-        '#C7D2FE', // Light indigo
-        '#86EFAC', // Light green
-        '#FED7AA'  // Light orange
+        '#C4B5FD', 
+        '#93C5FD', 
+        '#6EE7B7', 
+        '#FDE047', 
+        '#F9A8D4', 
+        '#C7D2FE', 
+        '#86EFAC', 
+        '#FED7AA'  
       ]
     );
 

@@ -69,17 +69,13 @@ const TableData = () => {
     allCategories
   } = useProducts();
 
-  // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(25);
   
-  // Selection state
   const [selectedItems, setSelectedItems] = useState([]);
   
-  // Search state
   const [searchTerm, setSearchTerm] = useState('');
   
-  // Modal states
   const { isOpen: isEditOpen, onOpen: onEditOpen, onClose: onEditClose } = useDisclosure();
   const { isOpen: isDeleteOpen, onOpen: onDeleteOpen, onClose: onDeleteClose } = useDisclosure();
   const { isOpen: isAddOpen, onOpen: onAddOpen, onClose: onAddClose } = useDisclosure();
@@ -96,12 +92,10 @@ const TableData = () => {
   const toast = useToast();
   const cancelRef = React.useRef();
 
-  // Color mode values
   const bgColor = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.600');
   const hoverBg = useColorModeValue('gray.50', 'gray.700');
 
-  // Filter products based on search term
   const searchFilteredProducts = useMemo(() => {
     if (!searchTerm) return sortedProducts;
     
@@ -112,18 +106,15 @@ const TableData = () => {
     );
   }, [sortedProducts, searchTerm]);
 
-  // Pagination calculations
   const totalPages = Math.ceil(searchFilteredProducts.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentProducts = searchFilteredProducts.slice(startIndex, endIndex);
 
-  // Reset to first page when search changes
   React.useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, itemsPerPage]);
 
-  // Sorting handler
   const handleSort = (field) => {
     if (sortBy === field) {
       setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
@@ -133,7 +124,6 @@ const TableData = () => {
     }
   };
 
-  // Selection handlers
   const handleSelectAll = (checked) => {
     if (checked) {
       setSelectedItems(currentProducts.map(p => p.id));
@@ -150,7 +140,6 @@ const TableData = () => {
     }
   };
 
-  // Pagination handlers
   const goToPage = (page) => {
     setCurrentPage(Math.max(1, Math.min(page, totalPages)));
   };
@@ -181,7 +170,6 @@ const TableData = () => {
     return buttons;
   };
 
-  // Stock status badge
   const getStockBadge = (stock) => {
     if (stock <= 10) {
       return <Badge colorScheme="red" variant="solid">Critical</Badge>;
@@ -192,13 +180,11 @@ const TableData = () => {
     }
   };
 
-  // Edit product handler
   const handleEdit = (product) => {
     setEditingProduct({ ...product });
     onEditOpen();
   };
 
-  // Delete handlers
   const handleDeleteSingle = (product) => {
     setProductToDelete(product);
     onDeleteOpen();
@@ -233,7 +219,6 @@ const TableData = () => {
     setProductToDelete(null);
   };
 
-  // Save edit handler
   const handleSaveEdit = () => {
     updateProduct(editingProduct.id, editingProduct);
     toast({
@@ -247,9 +232,7 @@ const TableData = () => {
     setEditingProduct(null);
   };
 
-  // Add product handler
   const handleAddProduct = () => {
-    // Validation
     if (!newProduct.name || !newProduct.category || !newProduct.price || 
         !newProduct.unitsSold || !newProduct.inStock) {
       toast({
@@ -278,7 +261,6 @@ const TableData = () => {
       isClosable: true,
     });
     
-    // Reset form
     setNewProduct({
       name: '',
       category: '',
@@ -296,7 +278,7 @@ const TableData = () => {
 
   return (
     <Box p={6} bg={bgColor} borderRadius="lg" shadow="sm">
-      {/* Header with Search and Actions */}
+      {/* Hdr */}
       <VStack spacing={4} mb={6}>
         <Flex justify="space-between" align="center" w="full" wrap="wrap" gap={4}>
           <Text fontSize="2xl" fontWeight="bold">
@@ -326,7 +308,7 @@ const TableData = () => {
           </HStack>
         </Flex>
 
-        {/* Search Bar */}
+        {/* bar search */}
         <InputGroup maxW="400px" alignSelf="flex-start">
           <InputLeftElement pointerEvents="none">
             <SearchIcon color="gray.300" />
@@ -339,7 +321,7 @@ const TableData = () => {
         </InputGroup>
       </VStack>
 
-      {/* Table */}
+      {/* Tbl*/}
       <TableContainer
         border="1px"
         borderColor={borderColor}
@@ -495,7 +477,7 @@ const TableData = () => {
         </Table>
       </TableContainer>
 
-      {/* Pagination */}
+      {/* Page*/}
       {totalPages > 1 && (
         <Flex justify="space-between" align="center" mt={6} wrap="wrap" gap={4}>
           <HStack spacing={2}>
@@ -542,7 +524,7 @@ const TableData = () => {
         </Flex>
       )}
 
-      {/* Add Product Modal */}
+      {/* adding modal */}
       <Modal isOpen={isAddOpen} onClose={onAddClose} size="lg">
         <ModalOverlay />
         <ModalContent>
@@ -616,7 +598,7 @@ const TableData = () => {
         </ModalContent>
       </Modal>
 
-      {/* Edit Modal */}
+      {/* editing modal */}
       <Modal isOpen={isEditOpen} onClose={onEditClose} size="lg">
         <ModalOverlay />
         <ModalContent>
@@ -692,7 +674,7 @@ const TableData = () => {
         </ModalContent>
       </Modal>
 
-      {/* Delete Confirmation Dialog */}
+      {/* dialogs */}
       <AlertDialog
         isOpen={isDeleteOpen}
         leastDestructiveRef={cancelRef}

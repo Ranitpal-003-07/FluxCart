@@ -16,8 +16,8 @@ import {
 
 
 
-
 const TestimonialCard = ({ name, role, content, avatar }) => {
+  //bg color
   const cardBg = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
   

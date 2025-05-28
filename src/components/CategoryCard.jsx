@@ -1,40 +1,26 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useMemo, useEffect } from 'react';
 import {
-  HStack,
   VStack,
   Text,
-  useDisclosure,
   Badge,
-  Stat,
-  StatLabel,
-  StatNumber,
   Card,
   CardBody,
   SimpleGrid,
-  Box,
   Heading,
-  Divider,
-  Flex,
-  Icon,
   useColorModeValue,
-  IconButton,
-  useColorMode,
-  Container,
 } from '@chakra-ui/react';
-import { TrendingUp, DollarSign, ShoppingCart, Target, Package, AlertTriangle, Sun, Moon } from 'lucide-react';
 
 
 
 
 const CategoryCard = ({ category, data, gradientKey }) =>{
-    
-     // Theme-aware color values
+
+      //background  and text colors
       const cardBg = useColorModeValue('white', 'gray.800');
       const textColor = useColorModeValue('gray.800', 'white');
       const subtleTextColor = useColorModeValue('gray.600', 'gray.300');
-    
-      // Elegant pastel gradients for light and dark modes
+      
+      //Gradient colors
       const lightGradients = {
         revenue: 'linear(135deg, #FFE5F1 0%, #FFE5E5 50%, #E5F3FF 100%)',
         units: 'linear(135deg, #E5F8FF 0%, #E5F0FF 50%, #F0E5FF 100%)',

@@ -14,6 +14,12 @@ import {
 import {
   Layers,
 } from 'lucide-react';
+import { Image } from '@chakra-ui/image';
+import logo from '../assets/main logo.png';
+
+
+
+
 
 
 const Footer = () => {
@@ -23,18 +29,20 @@ const Footer = () => {
           <Grid templateColumns={{ base: '1fr', md: 'repeat(4, 1fr)' }} gap={8}>
             <VStack spacing={4} align="start">
               <HStack spacing={2}>
-                <Box
-                  w={8}
-                  h={8}
-                  borderRadius="lg"
-                  bg="blue.500"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                >
-                  <Icon as={Layers} color="white" boxSize={4} />
-                </Box>
-                <Heading size="md">FluxCart</Heading>
+                  <Image 
+                    src={logo} 
+                    alt="FluxCart Logo" 
+                    boxSize="100px"
+                    objectFit="contain"
+                    borderRadius="8px"
+                    filter={useColorModeValue(
+                    "drop-shadow(0 4px 8px rgba(0,0,0,0.1))",
+                    "drop-shadow(0 4px 12px rgba(168, 85, 247, 0.3))"
+                    )}
+                  />
+                <Heading size="md">
+                  FluxCart
+                </Heading>
               </HStack>
               <Text fontSize="sm" color="gray.400" maxW="xs">
                 Empowering e-commerce businesses with intelligent analytics and actionable insights.

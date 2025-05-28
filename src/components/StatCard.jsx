@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import {
   VStack,
   Text,
@@ -10,13 +9,13 @@ import {
 } from '@chakra-ui/react';
 
 const StatCard = ({ label, value, icon, gradientKey, isLarge = false, suffix = '', prefix = '' })=>{
-   // Theme-aware color values
+   // stat colors 
     const cardBg = useColorModeValue('white', 'gray.800');
     const textColor = useColorModeValue('gray.800', 'white');
     const subtleTextColor = useColorModeValue('gray.600', 'gray.300');
 
 
-
+  // background gradient clrs
    const lightGradients = {
     revenue: 'linear(135deg, #FFE5F1 0%, #FFE5E5 50%, #E5F3FF 100%)',
     units: 'linear(135deg, #E5F8FF 0%, #E5F0FF 50%, #F0E5FF 100%)',

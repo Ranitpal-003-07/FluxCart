@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Box,
   Flex,
@@ -21,8 +21,6 @@ import {
   Tooltip,
   Button,
   Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
   useDisclosure,
   Drawer,
   DrawerBody,
@@ -45,6 +43,7 @@ import {
   Shield,
   HelpCircle
 } from 'lucide-react';
+import {useAuth} from '../context/AuthContext';
 
 const Navbar = ({activeTab}) => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -52,6 +51,7 @@ const Navbar = ({activeTab}) => {
   const [scrollY, setScrollY] = useState(0);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
 
+  const {currentUser} = useAuth();
    const navBg = useColorModeValue(
     'rgba(255, 255, 255, 0.11)',  
     'rgba(26, 32, 44, 0.45)'     
@@ -66,7 +66,7 @@ const Navbar = ({activeTab}) => {
   const textColor = useColorModeValue('gray.800', 'white');
   const mutedTextColor = useColorModeValue('gray.600', 'gray.400');
   
-  // Glassmorphism effect colors
+  // Glass effect
   const glassBg = useColorModeValue(
     'rgba(255, 255, 255, 0.9)',
     'rgba(26, 32, 44, 0.9)'
@@ -77,14 +77,14 @@ const Navbar = ({activeTab}) => {
     'rgba(45, 55, 72, 0.8)'
   );
 
-  // Handle scroll for dynamic effects
+  // scroll handle
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Professional notification data
+  // dummy data for notifications
   const notifications = [
     { id: 1, title: 'New project assigned', time: '2m ago', unread: true },
     { id: 2, title: 'Revenue milestone reached', time: '1h ago', unread: true },
@@ -95,41 +95,40 @@ const Navbar = ({activeTab}) => {
 
   return (
     <>
-      {/* Main Navbar */}
       <Box
         position="fixed"
         top={0}
-        left="280px" // Start after sidebar
+        left="280px"
         right={0}
         zIndex={1000}
         bg={navBg}
-        backdropFilter="blur(24px)" // Increased blur
+        backdropFilter="blur(24px)"
         borderBottom="1px solid"
         borderColor={borderColor}
         transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
         transform={scrollY > 50 ? 'translateY(-2px)' : 'translateY(0)'}
         boxShadow={scrollY > 50 ? 
           useColorModeValue(
-            '0 10px 40px rgba(0, 0, 0, 0.05)', // Softer shadow
-            '0 10px 40px rgba(0, 0, 0, 0.15)'  // Softer shadow
+            '0 10px 40px rgba(0, 0, 0, 0.05)', 
+            '0 10px 40px rgba(0, 0, 0, 0.15)'  
           ) : 
           'none'
         }
-        width="calc(100% - 280px)" // Account for sidebar
+        width="calc(100% - 280px)" 
       >
          <Container 
           maxW="100%" 
           px={8}
-          bg="transparent" // Make container transparent
+          bg="transparent" 
         >
           <Flex 
             align="center" 
             justify="space-between" 
             h="80px"
             transition="height 0.3s ease"
-            bg="transparent" // Transparent background
+            bg="transparent"
           >
-            {/* Left Section - Breadcrumb */}
+            {/* Left sec*/}
             <VStack align="start" spacing={1} flex={1}>
               <Breadcrumb
                 spacing="8px"
@@ -152,7 +151,7 @@ const Navbar = ({activeTab}) => {
               
             </VStack>
 
-            {/* Center Section - Search */}
+            {/* center sec*/}
             <Box flex={1} display={{ base: 'none', md: 'block' }} mx={8}>
               <InputGroup size="lg" maxW="400px" mx="auto">
                 <InputLeftElement pointerEvents="none" h="full">
@@ -197,9 +196,9 @@ const Navbar = ({activeTab}) => {
               </InputGroup>
             </Box>
 
-            {/* Right Section - Actions */}
+            {/* Rgt sec*/}
             <HStack spacing={4} flex={1} justify="flex-end">
-              {/* Mobile Menu Button */}
+              {/* mbl menu */}
               <IconButton
                 display={{ base: 'flex', md: 'none' }}
                 icon={<Menu size={20} />}
@@ -215,7 +214,7 @@ const Navbar = ({activeTab}) => {
                 transition="all 0.2s ease"
               />
 
-              {/* Color Mode Toggle */}
+              {/* mode tggl */}
               <Tooltip label={`Switch to ${colorMode === 'light' ? 'dark' : 'light'} mode`}>
                 <IconButton
                   icon={colorMode === 'light' ? <Moon size={18} /> : <Sun size={18} />}
@@ -232,7 +231,7 @@ const Navbar = ({activeTab}) => {
                 />
               </Tooltip>
 
-              {/* Notifications */}
+              {/* notifications */}
               <Menu>
                 <MenuButton
                   as={IconButton}
@@ -307,7 +306,7 @@ const Navbar = ({activeTab}) => {
                 </MenuList>
               </Menu>
 
-              {/* User Menu */}
+              {/* usr mnu */}
               <Menu>
                 <MenuButton
                   as={Button}
@@ -322,7 +321,7 @@ const Navbar = ({activeTab}) => {
                   leftIcon={
                     <Avatar
                       size="sm"
-                      name="Alex Parker"
+                      name={currentUser ? currentUser.displayName : 'Guest'}
                       bg="purple.500"
                       color="white"
                       fontWeight="600"
@@ -334,7 +333,7 @@ const Navbar = ({activeTab}) => {
                     fontWeight="600" 
                     display={{ base: 'none', lg: 'block' }}
                   >
-                    AP
+                    {currentUser ? currentUser.displayName: 'Guest'}
                   </Text>
                 </MenuButton>
                 <MenuList
@@ -371,7 +370,7 @@ const Navbar = ({activeTab}) => {
         </Container>
       </Box>
 
-      {/* Mobile Drawer */}
+      {/* Mbl drawer */}
       <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="sm">
         <DrawerOverlay backdropFilter="blur(4px)" />
         <DrawerContent bg={glassBg} backdropFilter="blur(20px)">
@@ -402,7 +401,7 @@ const Navbar = ({activeTab}) => {
         </DrawerContent>
       </Drawer>
 
-      {/* Spacer for fixed navbar */}
+      {/* space under navbar */}
       <Box h="80px" />
     </>
   );

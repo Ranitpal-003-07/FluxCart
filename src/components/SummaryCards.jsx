@@ -15,7 +15,7 @@ import StatCard from './StatCard';
 import CategoryCard from './CategoryCard';
 
 const SummaryCards = () => {
-  // Get data from ProductsContext
+  // fetch from product context
   const { 
     products, 
     selectedCategories, 
@@ -23,7 +23,7 @@ const SummaryCards = () => {
     lowStockThreshold
   } = useProducts();
 
-  // Filter products based only on selected categories
+  // filtering
   const filteredProducts = useMemo(() => {
     if (!selectedCategories || selectedCategories.length === 0) {
       return products;
@@ -33,7 +33,7 @@ const SummaryCards = () => {
     );
   }, [products, selectedCategories]);
 
-  // Chart data processing for categories
+  // chart data process
   const chartData = useMemo(() => {
     if (!selectedCategories || selectedCategories.length === 0) {
       return [];
@@ -47,7 +47,7 @@ const SummaryCards = () => {
         ? categoryProducts.reduce((sum, p) => sum + p.price, 0) / categoryProducts.length 
         : 0;
       
-      // Use context values for low stock calculation
+      // low stock cal
       const lowStockItems = categoryProducts.filter(p => 
         showLowStock ? p.inStock <= lowStockThreshold : p.inStock < 15
       ).length;
@@ -63,7 +63,7 @@ const SummaryCards = () => {
     });
   }, [filteredProducts, selectedCategories, showLowStock, lowStockThreshold]);
 
-  // Overall summary metrics
+  // total metrics
   const overallMetrics = useMemo(() => {
     const totalRevenue = filteredProducts.reduce((sum, p) => sum + (p.price * p.unitsSold), 0);
     const totalUnits = filteredProducts.reduce((sum, p) => sum + p.unitsSold, 0);
@@ -78,7 +78,7 @@ const SummaryCards = () => {
         )
       : { category: 'N/A', revenue: 0 };
     
-    // Use context values for low stock calculation
+    // using context 
     const lowStockItems = filteredProducts.filter(p => 
       showLowStock ? p.inStock <= lowStockThreshold : p.inStock < 15
     ).length;
@@ -93,7 +93,7 @@ const SummaryCards = () => {
     };
   }, [filteredProducts, chartData, showLowStock, lowStockThreshold]);
 
-  // Theme-aware color values
+  // color mode velues
   const bgColor = useColorModeValue('gray.50', 'gray.900');
   const textColor = useColorModeValue('gray.800', 'white');
   const borderColor = useColorModeValue('gray.200', 'gray.600');
@@ -102,7 +102,7 @@ const SummaryCards = () => {
     <Box bg={bgColor} minH="100vh" py={8}>
       <Container maxW="7xl">
         <VStack spacing={10} align="stretch">
-          {/* Overall Summary Section */}
+          {/* all summarised */}
           <Box>
             <Heading
               size="2xl"
@@ -165,7 +165,7 @@ const SummaryCards = () => {
             </SimpleGrid>
           </Box>
 
-          {/* Divider */}
+          {/* line */}
           <Box>
             <Divider 
               borderColor={borderColor}
@@ -175,7 +175,7 @@ const SummaryCards = () => {
             />
           </Box>
 
-          {/* Category-wise Summary Section */}
+          {/* cata section-selection */}
           <Box>
             <Heading
               size="2xl"

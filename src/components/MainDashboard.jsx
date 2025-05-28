@@ -13,14 +13,9 @@ export default function MainDashboard() {
   
   return (
       <VStack spacing={6} align="stretch">
-        {/* Summary Cards */}
         <SummaryCards />
-
-        {/* Chart Panel */}
         <ChartPanel/>
-
         <DataTable/>
-
       </VStack>
   );
 }

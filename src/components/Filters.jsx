@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   Box,
   VStack,
@@ -14,8 +13,6 @@ import {
   InputGroup,
   InputLeftElement,
   useDisclosure,
-  FormControl,
-  FormLabel,
   IconButton,
   Badge,
   RangeSlider,
@@ -49,6 +46,7 @@ import {
 import { useProducts } from '../context/ProductContext';
 
 const Filters = () => {
+  //using products context for filtering
   const {
     selectedCategories,
     setSelectedCategories,
@@ -73,7 +71,7 @@ const Filters = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const { isOpen: isExpanded, onToggle } = useDisclosure({ defaultIsOpen: true });
 
-  // Enhanced color scheme
+  // background gradient
   const bgGradient = useColorModeValue(
     'linear(135deg, blue.600 0%, purple.600 25%, pink.600 50%, orange.600 75%, red.600 100%)',
     'linear(135deg, blue.800 0%, purple.800 25%, pink.800 50%, orange.800 75%, red.800 100%)'
@@ -81,12 +79,11 @@ const Filters = () => {
   
   const cardBg = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.100', 'gray.700');
-  const shadowColor = useColorModeValue('rgba(0,0,0,0.08)', 'rgba(0,0,0,0.3)');
   const accentColor = useColorModeValue('blue.500', 'blue.300');
   const textColor = useColorModeValue('gray.700', 'gray.200');
   const mutedTextColor = useColorModeValue('gray.500', 'gray.400');
 
-  // Calculate active filters count
+  // calc actv filters
   const activeFiltersCount = [
     searchTerm.length > 0,
     selectedCategories.length !== allCategories.length,
@@ -181,7 +178,7 @@ const Filters = () => {
           position="relative"
           overflow="hidden"
         >
-          {/* Decorative elements */}
+          {/* decoration */}
           <Box
             position="absolute"
             top="-50%"
@@ -293,7 +290,7 @@ const Filters = () => {
 
         <Collapse in={isExpanded} animateOpacity>
           <CardBody p={8} pt={6}>
-            {/* Search and Sort Row */}
+            {/*Search */}
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} mb={10}>
               <FilterSection title="Search Products" icon={Search}>
                 <InputGroup size="lg">
@@ -369,9 +366,9 @@ const Filters = () => {
 
             <Divider mb={10} borderColor={borderColor} />
 
-            {/* Filter Controls Grid */}
+            {/* Filter section */}
             <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={8} mb={8}>
-              {/* Categories */}
+              {/* cata */}
               <FilterSection title="Categories" icon={ShoppingCart}>
                 <CheckboxGroup value={selectedCategories} onChange={setSelectedCategories}>
                   <Stack spacing={4}>
@@ -391,7 +388,7 @@ const Filters = () => {
                 </CheckboxGroup>
               </FilterSection>
 
-              {/* Price Range */}
+              {/* price range */}
               <FilterSection title={`Price Range: $${priceRange[0]} - $${priceRange[1]}`} icon={DollarSign}>
                 <Box w="full">
                   <RangeSlider
@@ -415,7 +412,7 @@ const Filters = () => {
                 </Box>
               </FilterSection>
 
-              {/* Units Sold Range */}
+              {/* unts sold rng */}
               <FilterSection title={`Units Sold: ${unitsSoldRange[0]} - ${unitsSoldRange[1]}`} icon={Package}>
                 <Box w="full">
                   <RangeSlider
@@ -439,7 +436,7 @@ const Filters = () => {
                 </Box>
               </FilterSection>
 
-              {/* Stock Level Range */}
+              {/* stk lvl rng */}
               <FilterSection title={`Stock Level: ${inStockRange[0]} - ${inStockRange[1]}`} icon={Package}>
                 <Box w="full">
                   <RangeSlider
@@ -463,7 +460,7 @@ const Filters = () => {
                 </Box>
               </FilterSection>
 
-              {/* Low Stock Alert */}
+              {/* Low stck alrt */}
               <FilterSection title="Low Stock Alert" icon={AlertTriangle}>
                 <VStack spacing={5} align="start" w="full">
                   <HStack justify="space-between" w="full">
@@ -496,7 +493,7 @@ const Filters = () => {
                 </VStack>
               </FilterSection>
 
-              {/* Quick Stock Filters */}
+              {/* quick access for filters */}
               <FilterSection title="Quick Stock Actions" icon={Package}>
                 <VStack spacing={3} w="full">
                   <QuickActionButton
@@ -524,7 +521,7 @@ const Filters = () => {
               </FilterSection>
             </SimpleGrid>
 
-            {/* Active Filters Display */}
+            {/* actv fltrs */}
             {activeFiltersCount > 0 && (
               <>
                 <Divider mb={6} borderColor={borderColor} />
