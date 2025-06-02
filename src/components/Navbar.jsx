@@ -46,7 +46,7 @@ import {
 import {useAuth} from '../context/AuthContext';
 import { useNavigate } from "react-router-dom";
 
-const Navbar = ({activeTab}) => {
+const Navbar = ({activeTab,setActiveTab}) => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [scrollY, setScrollY] = useState(0);
@@ -359,7 +359,9 @@ const Navbar = ({activeTab}) => {
                     '0 20px 40px rgba(0, 0, 0, 0.3)'
                   )}
                 >
-                  <MenuItem icon={<User size={16} />}>
+                  <MenuItem icon={<User size={16} />}
+                    onClick={() => setActiveTab('profile')}
+                  >
                     Profile Settings
                   </MenuItem>
                   <MenuItem icon={<Settings size={16} />}>

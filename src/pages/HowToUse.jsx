@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Box,
   Container,
@@ -8,29 +8,17 @@ import {
   VStack,
   HStack,
   Grid,
-  GridItem,
   Card,
   CardBody,
   Icon,
   Badge,
-  Divider,
   Accordion,
   AccordionItem,
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-  Image,
-  Avatar,
-  AvatarGroup,
   Progress,
   useColorModeValue,
-  Flex,
-  Stack,
   AspectRatio,
   SimpleGrid,
   IconButton,
@@ -40,30 +28,10 @@ import {
   ModalHeader,
   ModalBody,
   ModalCloseButton,
-  useDisclosure,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
-  Input,
-  FormControl,
-  FormLabel,
-  Select,
-  Tooltip,
-  useToast,
-  Spinner,
-  Skeleton,
-  SkeletonText,
   Tag,
   TagLabel,
-  TagCloseButton,
-  Stat,
-  StatLabel,
-  StatNumber,
-  StatHelpText,
-  StatArrow,
   CircularProgress,
+  useDisclosure,
   CircularProgressLabel
 } from '@chakra-ui/react';
 import { 
@@ -71,39 +39,24 @@ import {
   FiPlus, 
   FiEdit3, 
   FiTag, 
-  FiShoppingCart, 
-  FiHeart, 
-  FiShare2, 
-  FiDownload, 
-  FiStar,
   FiUsers,
   FiTrendingUp,
   FiZap,
   FiShield,
   FiSmartphone,
-  FiMonitor,
   FiRefreshCw,
-  FiTrash2,
   FiCopy,
   FiCheck,
-  FiX,
   FiArrowRight,
   FiBookOpen,
   FiHelpCircle,
-  FiMessageCircle,
-  FiSettings,
-  FiPackage,
-  FiSend,
   FiArrowUp
 } from 'react-icons/fi';
 
 const HowToUse = () => {
   const [activeStep, setActiveStep] = useState(0);
-  const [cartItems, setCartItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [demoProgress, setDemoProgress] = useState(0);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const toast = useToast();
 
   const bgGradient = useColorModeValue(
     'linear(to-br, blue.50, purple.50, pink.50)',
@@ -214,64 +167,8 @@ const HowToUse = () => {
     }
   ];
 
-  const sampleProducts = [
-    { id: 1, name: 'Premium Wireless Headphones', price: 299.99, image: '🎧' },
-    { id: 2, name: 'Smart Watch Series X', price: 399.99, image: '⌚' },
-    { id: 3, name: 'Laptop Stand Pro', price: 89.99, image: '💻' },
-    { id: 4, name: 'Mechanical Keyboard', price: 149.99, image: '⌨️' }
-  ];
 
-  const addToCart = (product) => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setCartItems(prev => {
-        const existing = prev.find(item => item.id === product.id);
-        if (existing) {
-          return prev.map(item => 
-            item.id === product.id 
-              ? { ...item, quantity: item.quantity + 1 }
-              : item
-          );
-        }
-        return [...prev, { ...product, quantity: 1 }];
-      });
-      setIsLoading(false);
-      toast({
-        title: 'Product Added!',
-        description: `${product.name} has been added to your cart`,
-        status: 'success',
-        duration: 2000,
-        isClosable: true,
-      });
-    }, 800);
-  };
 
-  const removeFromCart = (productId) => {
-    setCartItems(prev => prev.filter(item => item.id !== productId));
-    toast({
-      title: 'Item Removed',
-      description: 'Product has been removed from your cart',
-      status: 'info',
-      duration: 2000,
-      isClosable: true,
-    });
-  };
-
-  const updateQuantity = (productId, newQuantity) => {
-    if (newQuantity === 0) {
-      removeFromCart(productId);
-      return;
-    }
-    setCartItems(prev => 
-      prev.map(item => 
-        item.id === productId 
-          ? { ...item, quantity: newQuantity }
-          : item
-      )
-    );
-  };
-
-  const totalAmount = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   return (
     <Box minH="100vh" bg={bgGradient}>
@@ -620,165 +517,6 @@ const HowToUse = () => {
         </Container>
       </Box>
 
-      {/* Interactive Sandbox */}
-      <Container maxW="7xl" py={20}>
-        <VStack spacing={12}>
-          <VStack textAlign="center" spacing={4}>
-            <Badge colorScheme="green" fontSize="sm" px={3} py={1} borderRadius="full">
-              🧪 Interactive Demo
-            </Badge>
-            <Heading size="2xl" fontWeight="700">
-              Try It Yourself
-            </Heading>
-            <Text fontSize="lg" color={textColor} maxW="2xl">
-              Experience Flux Cart's features with our live interactive sandbox
-            </Text>
-          </VStack>
-
-          <Grid templateColumns={{ base: '1fr', lg: '2fr 1fr' }} gap={8} w="full">
-            {/* Product Grid */}
-            <VStack spacing={6} align="stretch">
-              <HStack justify="space-between">
-                <Heading size="lg">Sample Products</Heading>
-                <Button 
-                  size="sm" 
-                  variant="outline" 
-                  leftIcon={<Icon as={FiRefreshCw} />}
-                  onClick={() => setCartItems([])}
-                >
-                  Reset Cart
-                </Button>
-              </HStack>
-              
-              <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={4}>
-                {sampleProducts.map((product) => (
-                  <Card key={product.id} bg={cardBg} shadow="md" borderRadius="xl">
-                    <CardBody p={4}>
-                      <VStack spacing={3}>
-                        <Text fontSize="4xl">{product.image}</Text>
-                        <VStack spacing={1}>
-                          <Text fontWeight="600" textAlign="center" noOfLines={2}>
-                            {product.name}
-                          </Text>
-                          <Text fontSize="xl" fontWeight="700" color="blue.500">
-                            ${product.price}
-                          </Text>
-                        </VStack>
-                        <Button
-                          colorScheme="blue"
-                          size="sm"
-                          w="full"
-                          leftIcon={isLoading ? <Spinner size="xs" /> : <Icon as={FiPlus} />}
-                          onClick={() => addToCart(product)}
-                          isLoading={isLoading}
-                          loadingText="Adding..."
-                        >
-                          Add to Cart
-                        </Button>
-                      </VStack>
-                    </CardBody>
-                  </Card>
-                ))}
-              </SimpleGrid>
-            </VStack>
-
-            {/* Cart Sidebar */}
-            <Card bg={cardBg} shadow="xl" borderRadius="2xl" h="fit-content" position="sticky" top="4">
-              <CardBody p={6}>
-                <VStack spacing={4} align="stretch">
-                  <HStack justify="space-between">
-                    <HStack>
-                      <Icon as={FiShoppingCart} color="blue.500" />
-                      <Heading size="md">Your Cart</Heading>
-                    </HStack>
-                    <Badge colorScheme="blue" borderRadius="full">
-                      {cartItems.length} items
-                    </Badge>
-                  </HStack>
-
-                  <Divider />
-
-                  {cartItems.length === 0 ? (
-                    <VStack spacing={4} py={8} color={textColor}>
-                      <Icon as={FiShoppingCart} boxSize={12} opacity={0.3} />
-                      <Text textAlign="center">Your cart is empty</Text>
-                      <Text fontSize="sm" textAlign="center" opacity={0.7}>
-                        Add some products to get started
-                      </Text>
-                    </VStack>
-                  ) : (
-                    <VStack spacing={3} align="stretch">
-                      {cartItems.map((item) => (
-                        <HStack key={item.id} p={3} bg="gray.50" borderRadius="lg">
-                          <Text fontSize="2xl">{item.image}</Text>
-                          <VStack align="start" spacing={0} flex={1}>
-                            <Text fontWeight="600" fontSize="sm" noOfLines={1}>
-                              {item.name}
-                            </Text>
-                            <Text color="blue.500" fontWeight="700">
-                              ${(item.price * item.quantity).toFixed(2)}
-                            </Text>
-                          </VStack>
-                          <HStack spacing={2}>
-                            <NumberInput
-                              value={item.quantity}
-                              min={1}
-                              max={10}
-                              size="sm"
-                              w="70px"
-                              onChange={(valueString, valueNumber) => 
-                                updateQuantity(item.id, valueNumber)
-                              }
-                            >
-                              <NumberInputField />
-                              <NumberInputStepper>
-                                <NumberIncrementStepper />
-                                <NumberDecrementStepper />
-                              </NumberInputStepper>
-                            </NumberInput>
-                            <IconButton
-                              size="sm"
-                              colorScheme="red"
-                              variant="ghost"
-                              icon={<Icon as={FiTrash2} />}
-                              onClick={() => removeFromCart(item.id)}
-                            />
-                          </HStack>
-                        </HStack>
-                      ))}
-
-                      <Divider />
-
-                      <HStack justify="space-between" fontWeight="700" fontSize="lg">
-                        <Text>Total:</Text>
-                        <Text color="blue.500">${totalAmount.toFixed(2)}</Text>
-                      </HStack>
-
-                      <Button 
-                        colorScheme="blue" 
-                        size="lg" 
-                        leftIcon={<Icon as={FiSend} />}
-                        onClick={() => {
-                          toast({
-                            title: 'Demo Checkout',
-                            description: 'This is a demo - no real purchase made!',
-                            status: 'info',
-                            duration: 3000,
-                            isClosable: true,
-                          });
-                        }}
-                      >
-                        Checkout Now
-                      </Button>
-                    </VStack>
-                  )}
-                </VStack>
-              </CardBody>
-            </Card>
-          </Grid>
-        </VStack>
-      </Container>
-
       {/* FAQ Section */}
       <Box bg="gray.50" py={20}>
         <Container maxW="4xl">
@@ -821,245 +559,8 @@ const HowToUse = () => {
         </Container>
       </Box>
 
-      {/* Download Resources */}
-      <Container maxW="7xl" py={20}>
-        <VStack spacing={12}>
-          <VStack textAlign="center" spacing={4}>
-            <Badge colorScheme="cyan" fontSize="sm" px={3} py={1} borderRadius="full">
-              📚 Resources
-            </Badge>
-            <Heading size="2xl" fontWeight="700">
-              Download & Resources
-            </Heading>
-            <Text fontSize="lg" color={textColor} maxW="2xl">
-              Take Flux Cart knowledge with you - guides, assets, and integration tools
-            </Text>
-          </VStack>
-
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} w="full">
-            <Card 
-              bg={cardBg} 
-              shadow="lg" 
-              borderRadius="2xl"
-              transition="all 0.2s"
-              _hover={{ transform: 'translateY(-4px)', shadow: 'xl' }}
-            >
-              <CardBody p={8} textAlign="center">
-                <VStack spacing={6}>
-                  <Box
-                    bg="red.500"
-                    color="white"
-                    p={4}
-                    borderRadius="xl"
-                    w="fit-content"
-                  >
-                    <Icon as={FiDownload} boxSize={8} />
-                  </Box>
-                  <VStack spacing={2}>
-                    <Heading size="md">Quick Reference PDF</Heading>
-                    <Text color={textColor} fontSize="sm">
-                      Printable guide with shortcuts, tips, and troubleshooting
-                    </Text>
-                    <Badge colorScheme="red" size="sm">2.4 MB</Badge>
-                  </VStack>
-                  <Button 
-                    colorScheme="red" 
-                    variant="outline" 
-                    size="sm"
-                    leftIcon={<Icon as={FiDownload} />}
-                    onClick={() => {
-                      toast({
-                        title: 'Download Started',
-                        description: 'PDF guide is being prepared...',
-                        status: 'success',
-                        duration: 2000,
-                        isClosable: true,
-                      });
-                    }}
-                  >
-                    Download PDF
-                  </Button>
-                </VStack>
-              </CardBody>
-            </Card>
-
-            <Card 
-              bg={cardBg} 
-              shadow="lg" 
-              borderRadius="2xl"
-              transition="all 0.2s"
-              _hover={{ transform: 'translateY(-4px)', shadow: 'xl' }}
-            >
-              <CardBody p={8} textAlign="center">
-                <VStack spacing={6}>
-                  <Box
-                    bg="green.500"
-                    color="white"
-                    p={4}
-                    borderRadius="xl"
-                    w="fit-content"
-                  >
-                    <Icon as={FiPackage} boxSize={8} />
-                  </Box>
-                  <VStack spacing={2}>
-                    <Heading size="md">SVG Icon Pack</Heading>
-                    <Text color={textColor} fontSize="sm">
-                      Complete set of Flux Cart icons for your integrations
-                    </Text>
-                    <Badge colorScheme="green" size="sm">24 Icons</Badge>
-                  </VStack>
-                  <Button 
-                    colorScheme="green" 
-                    variant="outline" 
-                    size="sm"
-                    leftIcon={<Icon as={FiDownload} />}
-                    onClick={() => {
-                      toast({
-                        title: 'Icons Downloaded',
-                        description: 'SVG icon pack is ready to use!',
-                        status: 'success',
-                        duration: 2000,
-                        isClosable: true,
-                      });
-                    }}
-                  >
-                    Get Icons
-                  </Button>
-                </VStack>
-              </CardBody>
-            </Card>
-
-            <Card 
-              bg={cardBg} 
-              shadow="lg" 
-              borderRadius="2xl"
-              transition="all 0.2s"
-              _hover={{ transform: 'translateY(-4px)', shadow: 'xl' }}
-            >
-              <CardBody p={8} textAlign="center">
-                <VStack spacing={6}>
-                  <Box
-                    bg="purple.500"
-                    color="white"
-                    p={4}
-                    borderRadius="xl"
-                    w="fit-content"
-                  >
-                    <Icon as={FiSettings} boxSize={8} />
-                  </Box>
-                  <VStack spacing={2}>
-                    <Heading size="md">API Documentation</Heading>
-                    <Text color={textColor} fontSize="sm">
-                      Complete developer guide with code examples
-                    </Text>
-                    <Badge colorScheme="purple" size="sm">Live Docs</Badge>
-                  </VStack>
-                  <Button 
-                    colorScheme="purple" 
-                    variant="outline" 
-                    size="sm"
-                    leftIcon={<Icon as={FiBookOpen} />}
-                    onClick={() => {
-                      toast({
-                        title: 'Opening Docs',
-                        description: 'API documentation loading...',
-                        status: 'info',
-                        duration: 2000,
-                        isClosable: true,
-                      });
-                    }}
-                  >
-                    View Docs
-                  </Button>
-                </VStack>
-              </CardBody>
-            </Card>
-          </SimpleGrid>
-        </VStack>
-      </Container>
-
-      {/* Feedback Section */}
-      <Box bg="gray.50" py={16}>
-        <Container maxW="4xl">
-          <Card bg={cardBg} shadow="2xl" borderRadius="3xl" overflow="hidden">
-            <CardBody p={12}>
-              <VStack spacing={8} textAlign="center">
-                <VStack spacing={4}>
-                  <Heading size="xl" fontWeight="700">
-                    Was this guide helpful?
-                  </Heading>
-                  <Text fontSize="lg" color={textColor}>
-                    Your feedback helps us improve the Flux Cart experience
-                  </Text>
-                </VStack>
-
-                <HStack spacing={4} justify="center">
-                  {['😍', '😊', '😐', '😕', '😤'].map((emoji, index) => (
-                    <Button
-                      key={index}
-                      variant="ghost"
-                      size="lg"
-                      fontSize="3xl"
-                      p={4}
-                      borderRadius="full"
-                      _hover={{ 
-                        bg: 'blue.50', 
-                        transform: 'scale(1.1)' 
-                      }}
-                      transition="all 0.2s"
-                      onClick={() => {
-                        toast({
-                          title: 'Thank you!',
-                          description: 'Your feedback has been recorded.',
-                          status: 'success',
-                          duration: 3000,
-                          isClosable: true,
-                        });
-                      }}
-                    >
-                      {emoji}
-                    </Button>
-                  ))}
-                </HStack>
-
-                <Divider />
-
-                <VStack spacing={4} w="full">
-                  <Text fontWeight="600" color={textColor}>
-                    Need more help?
-                  </Text>
-                  <HStack spacing={4} justify="center" flexWrap="wrap">
-                    <Button 
-                      leftIcon={<Icon as={FiMessageCircle} />}
-                      variant="outline"
-                      colorScheme="blue"
-                      size="sm"
-                    >
-                      Live Chat
-                    </Button>
-                    <Button 
-                      leftIcon={<Icon as={FiBookOpen} />}
-                      variant="outline"
-                      colorScheme="purple"
-                      size="sm"
-                    >
-                      Knowledge Base
-                    </Button>
-                    <Button 
-                      leftIcon={<Icon as={FiUsers} />}
-                      variant="outline"
-                      colorScheme="green"
-                      size="sm"
-                    >
-                      Community
-                    </Button>
-                  </HStack>
-                </VStack>
-              </VStack>
-            </CardBody>
-          </Card>
-        </Container>
-      </Box>
+      
+      
 
       {/* Footer CTA */}
       <Container maxW="7xl" py={20}>
@@ -1132,32 +633,6 @@ const HowToUse = () => {
         </Card>
       </Container>
 
-      {/* Floating Chat Button */}
-      <IconButton
-        position="fixed"
-        bottom={8}
-        right={8}
-        colorScheme="blue"
-        size="lg"
-        borderRadius="full"
-        shadow="2xl"
-        icon={<Icon as={FiMessageCircle} boxSize={6} />}
-        zIndex={1000}
-        _hover={{ 
-          transform: 'scale(1.1)',
-          shadow: '2xl'
-        }}
-        transition="all 0.2s"
-        onClick={() => {
-          toast({
-            title: 'Chat Support',
-            description: 'Our team is here to help! Chat feature coming soon.',
-            status: 'info',
-            duration: 3000,
-            isClosable: true,
-          });
-        }}
-      />
     </Box>
   );
 };

@@ -85,6 +85,7 @@ const Dashboard = () => {
           >
             <Navbar 
               activeTab={activeTab} 
+              setActiveTab={setActiveTab}
               onMenuClick={() => setSidebarOpen(true)}
             />
           </Box>
